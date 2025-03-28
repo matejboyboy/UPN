@@ -1,5 +1,5 @@
 # UPN Končni Projekt Naloga  
-**How fast can you type?**  
+**How fast can you type, and learn at the same time?**  
 
 Projekt, ki zduži tečaje slepega tipkanja in testiranje hitrosti tvojega tipkanja.  
 
