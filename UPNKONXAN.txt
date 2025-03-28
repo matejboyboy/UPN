@@ -1,0 +1,29 @@
+UPN Končni Projek Naloga
+How fast can you type?
+Projekt ki zduzi tecaje slepega pisanja in testeranje hitrosti tvojega pisanja.
+
+Identifikacija problema in opis rešitve :
+	Resujeva problem, saj ne obstaja skupne strani za ucenje ter preizkusitev tvojega slepega pisanja.
+	Obstajajo strani ki te naucijo slepo pisat, ter strani ki te preizkusijo kako hitro lahko pises ampak ni ene
+	same strani, ki ti pomaga pri obeh ali resuje oba problema na enkrat.
+	Ucenje pisanje in testiranje tvoje pisanja vse v enem.
+	Ciljna skupina: Med 13-30, ljudi ki se želijo naučiti slepo tipkati.
+	Te spletne strani imajo veliko mesecni in dnevnih obiskovlacev.
+	-Matej: Lahko bi izboljsav svoje slepo pisanje, ter hitros njega saj nism tako dobr, kot moj prijatelj Aleš.
+	-Aleš: Lahko bi bil še hitrejši in boljši.
+	Veva, da ima ta projekt, stran ogromen potencial, zaradi nerazizkanega trga najnega projekta.
+	Problem je da ni ene skupne spletne strani za ucenje pisanja in uterjevanje, izboljsave tvojega pisanja.
+	
+Analiza Trga:
+	Monkeytype: samo za pridobitve hitrost tvojega pisanja? 3.2mil na mesec Prednosti: Clean, simple Slabosti: Manjka učni del slepega pisanja.
+	TypeRacer: tekmovanje proti drugim, svojim prijateljem a tudi proti sebi. 1.2mil na mesec Prednosti: Tekmovanje proti drugim, ki je vizualno prikazano. Slabosti: Ni učnega dela, za samoučenje.
+	TypingClub: Za ucenje slepega pisanja, lep izgled zabavne ucne ure. 2.6mil na mesec. Prednosti: Ima dobre, učinkovite uče ure, ki ti pomagajo izbolšati tvoje slepo pisanje. Slabosti: Nima dela, kjer bi lahko preizkusil svoje sposobnosti.
+	
+SWOT Analiza:
+	Prednosti:
+	Slabosti:
+	Pribložnosti:
+	Grožnje:
+	
+	
+
