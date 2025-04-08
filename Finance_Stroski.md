@@ -16,7 +16,7 @@
    - **Tier 2 - 4€**  
      (Tekmovanje z 8-20 igralci, dodatne teme, višji nivo na Discordu, vse ikone in okvirji odključani)
    - **Tier 3 - 6€**  
-     (Posebne premium teme, najvišji nivo na Discordu, dostop do "za kulisanami" vsebin, VIP okvir in ikona)
+     (Posebne premium teme, najvišji nivo na Discordu, dostop do "BTS" vsebin, VIP okvir in ikona)
 3. **Nakup dinamičnih tem ozadij**  
    (Interaktivno ozadje, ki se spreminja glede na uspešnost tipkanja - 5€)
 4. **Oglasi**
