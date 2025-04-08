@@ -32,9 +32,8 @@
 
 ## Stroški
 1. **Začetni razvoj**: 0€
-2. **Marketing**:  
+2. **Marketing**: 500€/mesec
    - Oglaševanje na YouTube, izobraževalnih platformah in mobilnih igrah  
-   - **500€/mesec**
 3. **Domena**: 8€/leto
 4. **Gostovanje**: 2€/mesec
 
