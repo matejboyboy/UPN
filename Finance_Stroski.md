@@ -1,38 +1,36 @@
-# Poslovni model in osnovni finančni plan
+# Poslovni model in osnovni finančni plan:
 
-## Brezplačne storitve:
-- Test hitrosti tipkanja brezplačen
-- Vse učne ure za učenje slepega tipkanja (v vseh jezikih)
-- Osnovni game modi za hitrostno tipkanje
-- Leaderboard uporabnikov in prikaz porabe na strani
-- Rank mode: tekmovanje proti drugim uporabnikom
-- Leaderboard za najhitrejše rezultate (tedensko, mesečno, vse čase)
+## Free:
+- Test hitrosti tipkanja zastonj
+- Vse učne ure za naučenje slepega tipkanja (v vseh jezikih končno)
+- Osnovni game modi pri hitrostnem tipkanju
+- Leaderboard accountov in koliko so zapravili na strani
+- Rank mode: match proti drugim ljudem
+- Leaderboard za najhitrejše rezultate (tedensko, mesečno, all time)
 
-## Viri prihodkov:
+## Viri Prihodkov:
 1. **Donacije** (0€ - max€)
-2. **Članarine** z različnimi nivoji:
-   - **Tier 1 - 2€**  
-     (Prilagoditev teme/ozadja, dostop do Discord skupnosti, različni fonti, dodatni okvirji, ikone profila)
-   - **Tier 2 - 4€**  
-     (Tekmovanje z 8-20 igralci, dodatne teme, višji nivo na Discordu, vse ikone in okvirji odključani)
-   - **Tier 3 - 6€**  
-     (Posebne premium teme, najvišji nivo na Discordu, dostop do "BTS" vsebin, VIP okvir in ikona)
-3. **Nakup dinamičnih tem ozadij**  
-   (Interaktivno ozadje, ki se spreminja glede na uspešnost tipkanja - 5€)
-4. **Oglasi**
+2. **Članarina**, z dodatnimi možnostmi - tieri (Dodajo kksen nov gamemode ali ozadja-theme ko se učiš ali pišeš)
+   - **Tier 1** - 2€  
+     (Lahko spremeniš themo-ozadje na drugačno barvo odtenek, dostop do discorda uporabnikov, različni fonti, dodatni borderji, iconi za account)
+   - **Tier 2** - 4€  
+     (8-20 player race, dodatne theme, višji tier v discordu, vs)
+   - **Tier 3** - 6€  
+     (Dostop do posebnih special boljših theme, najvišji tier v discordu, dostop do BTS od začetka, ustanavljanja, in končitve strani, ter stvari ki sledijo v prihodnosti za stran)
+3. **Kupovanja boljših bolj živahnih theme-ozadij**  
+   Recimo ozadje zaživi ko si na hot streak brez napak ozdaje zaživi, več in več napak narediš, bolj in bolj depresivno postane ozdaje. **5€**
+4. **ADs**
+5. Diplome / Certificati:  
+   Dobiš po opravljenjem testu diplomo / certificat koko hitro lahko tipkaš 3€
 
 ## Stroški:
-1. Začetni razvoj: **0€**
-2. Marketing:  
-   - Oglasi na YouTubu  
-   - Oglasi na straneh o tipkanju/tipkovnicah  
-   - Oglasi na spletnih učnih virih/mobilnih igrah  
-   Skupaj: **500€/mesec**
-3. Domena: **8€/leto**
-4. Spletno gostovanje: **2€/mesec**
+1. Začetni razvoj: 0€
+2. Marketing: Ads na YouTubu, Ads na straneh povezanih z tipkanje/tipkovnicami, ads na learning websiteh/mobilgamih. **500€ na mesec**
+3. Domena: **8€ na leto**
+4. Spletno gostovanje: **2€ na mesec**
 
-## Strategija pridobivanja uporabnikov:
-1. Marketinške kampanje (oglasi)
-2. Širjenje povezave
-3. Promocijski video
-4. Aktivno sodelovanje s skupnostjo prek socialnih omrežij (uradni profili podjetja)
+## Strategija za pridobivanje prvih uporabnikov:
+1. Preko Marketinga (Ads)
+2. Širjenje linka
+3. Promotional video
+4. Engaging with the community skozi različne medijske aplikacije (narejen account za podjetje/stran)
