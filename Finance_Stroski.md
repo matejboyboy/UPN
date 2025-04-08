@@ -1,36 +1,48 @@
-# Poslovni model in osnovni finančni plan:
+# Poslovni model in osnovni finančni plan
 
-## Free:
-- Test hitrosti tipkanja zastonj
-- Vse učne ure za naučenje slepega tipkanja (v vseh jezikih končno)
+## Brezplačne funkcionalnosti
+- Test hitrosti tipkanja (zastonj)
+- Vse učne ure za slepo tipkanje (v vseh jezikih)
 - Osnovni game modi pri hitrostnem tipkanju
-- Leaderboard accountov in koliko so zapravili na strani
-- Rank mode: match proti drugim ljudem
-- Leaderboard za najhitrejše rezultate (tedensko, mesečno, all time)
+- Leaderboard:
+  - Uvrščanje uporabnikov po aktivnosti na strani
+  - Rezultati po tednih/mesecih/vseh časih
+- Rank mode: tekmovanje v tipkanju z drugimi uporabniki
 
-## Viri Prihodkov:
-1. **Donacije** (0€ - max€)
-2. **Članarina**, z dodatnimi možnostmi - tieri (Dodajo kksen nov gamemode ali ozadja-theme ko se učiš ali pišeš)
-   - **Tier 1** - 2€  
-     (Lahko spremeniš themo-ozadje na drugačno barvo odtenek, dostop do discorda uporabnikov, različni fonti, dodatni borderji, iconi za account)
-   - **Tier 2** - 4€  
-     (8-20 player race, dodatne theme, višji tier v discordu, vs)
-   - **Tier 3** - 6€  
-     (Dostop do posebnih special boljših theme, najvišji tier v discordu, dostop do BTS od začetka, ustanavljanja, in končitve strani, ter stvari ki sledijo v prihodnosti za stran)
-3. **Kupovanja boljših bolj živahnih theme-ozadij**  
-   Recimo ozadje zaživi ko si na hot streak brez napak ozdaje zaživi, več in več napak narediš, bolj in bolj depresivno postane ozdaje. **5€**
-4. **ADs**
-5. **Diplome / Certificati:** 
-   Dobiš po opravljenjem testu diplomo / certificat koko hitro lahko tipkaš **3€**
+## Viri prihodkov
+1. **Donacije** (0€ - max. znesek)
+2. **Članarine** s tier sistemom:
+   - **Tier 1 (2€/mesec)**  
+     - Prilagodljive teme (barve, odtenki)
+     - Dostop do ekskluzivne Discord skupnosti
+     - Dodatni fonti in ikone
+   - **Tier 2 (4€/mesec)**  
+     - 8-20 igralcev v simultanem tekmovanju
+     - Premium teme
+     - Višji Discord status
+   - **Tier 3 (6€/mesec)**  
+     - VIP teme
+     - Najvišji Discord status
+     - Dostop do BTS (backstage) vsebin
+3. **Premium teme** (5€ enkratno):  
+   Interaktivna ozadja, ki se spreminjajo glede na uspešnost tipkanja
+4. **Oglasi** (display in video)
+5. **Certifikati** (3€):  
+   Potrdilo o doseženi hitrosti tipkanja po opravljenem testu
 
-## Stroški:
-1. Začetni razvoj: 0€
-2. Marketing: Ads na YouTubu, Ads na straneh povezanih z tipkanje/tipkovnicami, ads na learning websiteh/mobilgamih. **500€ na mesec**
-3. Domena: **8€ na leto**
-4. Spletno gostovanje: **2€ na mesec**
+## Stroški
+1. **Začetni razvoj**: 0€
+2. **Marketing**:  
+   - Oglaševanje na YouTube, izobraževalnih platformah in mobilnih igrah  
+   - **500€/mesec**
+3. **Domena**: 8€/leto
+4. **Gostovanje**: 2€/mesec
 
-## Strategija za pridobivanje prvih uporabnikov:
-1. Preko Marketinga (Ads)
-2. Širjenje linka
-3. Promotional video
-4. Engaging with the community skozi različne medijske aplikacije (narejen account za podjetje/stran)
+## Strategija za pridobivanje uporabnikov
+1. Ciljno oglaševanje (Google Ads, socialni mediji)
+2. Viralno širjenje po community-jih (Reddit, Discord)
+3. Promocijski video tutoriali
+4. Aktivno komuniciranje prek:
+   - Dediciranega Discord strežnika
+   - Socialnih omrežij (Twitter, Instagram)
+   - Forumev za tipkanje in izobraževanje
