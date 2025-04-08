@@ -5,7 +5,7 @@
 - Vse učne ure za slepo tipkanje (v vseh jezikih)
 - Osnovni game modi pri hitrostnem tipkanju
 - Leaderboard:
-  - Uvrščanje uporabnikov po aktivnosti na strani
+  - Uvrščanje uporabnikov po finančni aktivnosti na strani
   - Rezultati po tednih/mesecih/vseh časih
 - Rank mode: tekmovanje v tipkanju z drugimi uporabniki
 
