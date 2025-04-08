@@ -20,8 +20,8 @@
 3. **Kupovanja boljših bolj živahnih theme-ozadij**  
    Recimo ozadje zaživi ko si na hot streak brez napak ozdaje zaživi, več in več napak narediš, bolj in bolj depresivno postane ozdaje. **5€**
 4. **ADs**
-5. Diplome / Certificati:  
-   Dobiš po opravljenjem testu diplomo / certificat koko hitro lahko tipkaš 3€
+5. **Diplome / Certificati:** 
+   Dobiš po opravljenjem testu diplomo / certificat koko hitro lahko tipkaš **3€**
 
 ## Stroški:
 1. Začetni razvoj: 0€
