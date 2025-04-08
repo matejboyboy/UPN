@@ -5,7 +5,7 @@ Projekt, ki zduži tečaje slepega tipkanja in testiranje hitrosti tvojega tipka
 
 ## Identifikacija problema in opis rešitve  
 Rešujemo problem, saj ne obstaja skupne spletne strani za učenje in preizkušanje slepega tipkanja.  
-Obstajajo strani, ki te naučijo slepo tipkati, in strani, ki preizkusijo tvojo hitrost tipkanja, vendar ni enotne platforme, ki bi združevala obe funkcionalnosti.  
+Obstajajo strani, ki te naučijo slepo tipkati, in strani, ki preizkusijo tvojo hitrost tipkanja, vendar ni enotne platforme, ki bi združevala obe funkcionalnosti, če pa obstajajo niso najbolj zanesljive.  
 
 - **Ciljna skupina:** 13–30 let, ljudje, ki se želijo naučiti slepega tipkanja.  
 - **Obiskovalci:** Te spletne strani imajo veliko mesečnih in dnevnih obiskov.  
