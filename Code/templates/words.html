@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .green_background{background-color: green;}
+        .red_background{background-color: red;}
+    </style>
+</head>
+<body>
+    
+    <div> {{word}}
+    </div>
+
+    <div id="input">
+    </div>
+
+    <div id="wpm">
+    </div>
+
+    <script src="../static/js/typing_logic.js"></script>
+    <script>
+
+    import { calculateWPM } from "../static/js/wpm.js";
+
+        let wpm = calculateWPM(charactersTyped, timeInMinutes);
+        let pyVariable = "{{word}}";
+        let typed = "";
+        let charactersTyped;
+
+        let startTime = performance.now();
+
+
+        setTimeout(() => {
+
+            let endTime = performance.now();
+
+            let elapsedTime = endTime - startTime;
+            console.log(elapsedTime);});
+            
+        document.addEventListener("keydown", (e) => { // detecta keypresse
+        if (e.key.length === 1) { //ignorira inpute k majo length > 1 (Shift, ctrl, enter, etc.)
+            typed += e.key;
+            charactersTyped ++;
+            checkInput(typed);
+        }
+        });
+
+
+        function checkInput(input) { //checka ce input matcha z generated textom
+            let inputElement = document.getElementById("input");
+            if (pyVariable.startsWith(input)) {
+                inputElement.setAttribute("class", "green_background");
+                console.log("Uredu");
+            } else { 
+                inputElement.setAttribute("class", "red_background");
+                console.log("Napacn");
+            }
+        }
+    </script>
+</body>
+</html>
