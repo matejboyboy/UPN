@@ -3,4 +3,3 @@ function calculateWPM(charactersTyped, timeInMinutes) {
     const wpm = words / timeInMinutes;
     return wpm;
 }
-export { calculateWPM };
