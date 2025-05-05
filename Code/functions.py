@@ -2,9 +2,6 @@ from flask import request
 import json
 import requests
 
-
-
-
 def generated_words(word_count):
     api_url = f'https://random-word-api.herokuapp.com/word?number={word_count}'
 
@@ -20,3 +17,4 @@ def generated_words(word_count):
     except (requests.RequestException, json.JSONDecodeError, ValueError) as e:
         print("Error:", e)
         return []
+
