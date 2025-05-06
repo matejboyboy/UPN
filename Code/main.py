@@ -47,6 +47,6 @@ def display_lesson(lesson_number):
     
     except FileNotFoundError:
         lesson_content = "Error: File " + file_name + " not found in Lessons folder"
-    return render_template('lesson.html', text_content=lesson_content)
+    return render_template('lesson.html', text_content=lesson_content, lesson_number=lesson_number)
 
 app.run(debug = True, port=5000)
