@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Roboto+Slab:wght@600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>Lessons (Light)</title>
+</head>
+
+<body class="light" data-completed-lessons="{{ completed_lessons | tojson }}">
+  <nav id="light-main-nav" class="light-glass">
+    <div class="light-nav-container">
+      <a href="/" id="light-nav-brand">
+        <span class="light-logo-primary">Type</span>
+        <span class="light-logo-secondary">Master</span>
+      </a>
+      <div id="light-nav-links" class="light-nav-links">
+        <a href="/words" class="light-nav-link">Words</a>
+        <a href="/leaderboardLight" class="light-nav-link">Leaderboard</a>
+        {% if 'username' in session %}
+        <a href="/lightprofile" class="light-nav-link">Profile</a>
+        {% else %}
+        <a href="/lightlogin" class="light-nav-link">Login</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  <section id="section-srednja" class="light-lesson-section light-alt-bg">
+    <h2 class="light-section-title">Srednja Vrstica</h2>
+    <ul class="light-lesson-list">
+      <li class="light-card"><a href="lightlesson/001" class="light-card-link">fj - first keys</a></li>
+      <li class="light-card"><a href="lightlesson/002" class="light-card-link">Repeting first keys</a></li>
+      <li class="light-card"><a href="lightlesson/003" class="light-card-link">Adding spaces</a></li>
+      <li class="light-card"><a href="lightlesson/004" class="light-card-link">Repeting spaced key stokes</a></li>
+      <li class="light-card"><a href="lightlesson/005" class="light-card-link">dk - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/006" class="light-card-link">Reapeting dk</a></li>
+      <li class="light-card"><a href="lightlesson/007" class="light-card-link">Adding spaces</a></li>
+      <li class="light-card"><a href="lightlesson/008" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/009" class="light-card-link">sl - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/010" class="light-card-link">Reapting sl</a></li>
+      <li class="light-card"><a href="lightlesson/011" class="light-card-link">Adding spaces</a></li>
+      <li class="light-card"><a href="lightlesson/012" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/013" class="light-card-link">ač - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/014" class="light-card-link">Reapeting ač</a></li>
+      <li class="light-card"><a href="lightlesson/015" class="light-card-link">Adding spaces</a></li>
+      <li class="light-card"><a href="lightlesson/016" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/017" class="light-card-link">Left hand only</a></li>
+      <li class="light-card"><a href="lightlesson/018" class="light-card-link">Right hand only</a></li>
+      <li class="light-card"><a href="lightlesson/019" class="light-card-link">gh - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/020" class="light-card-link">Reapeting gh</a></li>
+      <li class="light-card"><a href="lightlesson/021" class="light-card-link">Combinnig keys</a></li>
+      <li class="light-card"><a href="lightlesson/022" class="light-card-link">Forming words</a></li>
+      <li class="light-card"><a href="lightlesson/023" class="light-card-link">More words</a></li>
+    </ul>
+  </section>
+  <section id="section-zgornja" class="light-lesson-section">
+    <h2 class="light-section-title">Zgornja Vrstica</h2>
+    <ul class="light-lesson-list">
+      <li class="light-card"><a href="lightlesson/024" class="light-card-link">ru - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/025" class="light-card-link">Reapeting ru</a></li>
+      <li class="light-card"><a href="lightlesson/026" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/027" class="light-card-link">Some words</a></li>
+      <li class="light-card"><a href="lightlesson/028" class="light-card-link">ei - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/029" class="light-card-link">Reapeting ei</a></li>
+      <li class="light-card"><a href="lightlesson/030" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/031" class="light-card-link">Some words</a></li>
+      <li class="light-card"><a href="lightlesson/032" class="light-card-link">Forming sentences</a></li>
+      <li class="light-card"><a href="lightlesson/033" class="light-card-link">Left hand only</a></li>
+      <li class="light-card"><a href="lightlesson/034" class="light-card-link">Right hand only</a></li>
+      <li class="light-card"><a href="lightlesson/035" class="light-card-link">wo - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/036" class="light-card-link">Reapeting wo</a></li>
+      <li class="light-card"><a href="lightlesson/037" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/038" class="light-card-link">Forming sentences</a></li>
+      <li class="light-card"><a href="lightlesson/039" class="light-card-link">qz - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/040" class="light-card-link">Reapeting qz</a></li>
+      <li class="light-card"><a href="lightlesson/041" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/042" class="light-card-link">Forming words</a></li>
+      <li class="light-card"><a href="lightlesson/043" class="light-card-link">tp - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/044" class="light-card-link">Reapeting tp</a></li>
+      <li class="light-card"><a href="lightlesson/045" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/046" class="light-card-link">Forming sentences</a></li>
+    </ul>
+  </section>
+  <section id="section-spodnja" class="light-lesson-section light-alt-bg">
+    <h2 class="light-section-title">Spodnja Vrstica</h2>
+    <ul class="light-lesson-list">
+      <li class="light-card"><a href="lightlesson/047" class="light-card-link">vm - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/048" class="light-card-link">Reapting vm</a></li>
+      <li class="light-card"><a href="lightlesson/049" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/050" class="light-card-link">Forming sentences</a></li>
+      <li class="light-card"><a href="lightlesson/051" class="light-card-link">difficult key patterns - mju</a></li>
+      <li class="light-card"><a href="lightlesson/052" class="light-card-link">difficult key patterns - vfr</a></li>
+      <li class="light-card"><a href="lightlesson/053" class="light-card-link">c, - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/054" class="light-card-link">Reapeting c,</a></li>
+      <li class="light-card"><a href="lightlesson/055" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/056" class="light-card-link">Forming sentences</a></li>
+      <li class="light-card"><a href="lightlesson/057" class="light-card-link">difficult key patterns - ,ki</a></li>
+      <li class="light-card"><a href="lightlesson/058" class="light-card-link">difficult key patterns - cde</a></li>
+      <li class="light-card"><a href="lightlesson/059" class="light-card-link">x. - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/060" class="light-card-link">Reapeting x.</a></li>
+      <li class="light-card"><a href="lightlesson/061" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/062" class="light-card-link">Forming sentences</a></li>
+      <li class="light-card"><a href="lightlesson/063" class="light-card-link">difficult key patterns - .lo</a></li>
+      <li class="light-card"><a href="lightlesson/064" class="light-card-link">difficult key patterns - xsw</a></li>
+      <li class="light-card"><a href="lightlesson/065" class="light-card-link">y - new key</a></li>
+      <li class="light-card"><a href="lightlesson/066" class="light-card-link">Spaced y</a></li>
+      <li class="light-card"><a href="lightlesson/067" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/068" class="light-card-link">Forming sentences</a></li>
+      <li class="light-card"><a href="lightlesson/069" class="light-card-link">difficult key patterns - čp</a></li>
+      <li class="light-card"><a href="lightlesson/070" class="light-card-link">difficult key patterns - yaq</a></li>
+      <li class="light-card"><a href="lightlesson/071" class="light-card-link">bn - new keys</a></li>
+      <li class="light-card"><a href="lightlesson/072" class="light-card-link">Reapeting bn</a></li>
+      <li class="light-card"><a href="lightlesson/073" class="light-card-link">Combining keys</a></li>
+      <li class="light-card"><a href="lightlesson/074" class="light-card-link">Forming sentences</a></li>
+      <li class="light-card"><a href="lightlesson/075" class="light-card-link">Left hand only</a></li>
+      <li class="light-card"><a href="lightlesson/076" class="light-card-link">Right hand only</a></li>
+      <li class="light-card"><a href="lightlesson/077" class="light-card-link">More sentences</a></li>
+      <li class="light-card"><a href="lightlesson/078" class="light-card-link">difficult key patterns - .čp</a></li>
+      <li class="light-card"><a href="lightlesson/079" class="light-card-link">difficult key patterns combined</a></li>
+      <li class="light-card"><a href="lightlesson/080" class="light-card-link">Sentences with -Enter-</a></li>
+      <li class="light-card"><a href="lightlesson/081" class="light-card-link">More sentences with -Enter-</a></li>
+      <li class="light-card"><a href="lightlesson/082" class="light-card-link">Long sentences</a></li>
+      <li class="light-card"><a href="lightlesson/083" class="light-card-link">Longer sentences</a></li>
+      <li class="light-card"><a href="lightlesson/084" class="light-card-link">Final tutorial sentence</a></li>
+    </ul>
+  </section>
+  <section id="section-utrjevanje" class="light-lesson-section">
+    <h2 class="light-section-title">Utrjevanje</h2>
+    <ul class="light-lesson-list">
+      <li class="light-card"><a href="lightlesson/085" class="light-card-link">Sentences for exercise</a></li>
+      <li class="light-card"><a href="lightlesson/086" class="light-card-link">Sentences for exercise</a></li>
+      <li class="light-card"><a href="lightlesson/087" class="light-card-link">Sentences for exercise</a></li>
+      <li class="light-card"><a href="lightlesson/088" class="light-card-link">Sentences for exercise</a></li>
+      <li class="light-card"><a href="lightlesson/089" class="light-card-link">Sentences for exercise</a></li>
+      <li class="light-card"><a href="lightlesson/090" class="light-card-link">Sentences with difficult words</a></li>
+      <li class="light-card"><a href="lightlesson/091" class="light-card-link">Sentences with difficult words</a></li>
+      <li class="light-card"><a href="lightlesson/092" class="light-card-link">Sentences with difficult words</a></li>
+      <li class="light-card"><a href="lightlesson/093" class="light-card-link">Sentences with difficult words</a></li>
+      <li class="light-card"><a href="lightlesson/094" class="light-card-link">Sentences with difficult words</a></li>
+      <li class="light-card"><a href="lightlesson/095" class="light-card-link">Sentences with difficult words</a></li>
+      <li class="light-card"><a href="lightlesson/096" class="light-card-link">Sentences with difficult words</a></li>
+      <li class="light-card"><a href="lightlesson/097" class="light-card-link">Sentences with difficult words</a></li>
+      <li class="light-card"><a href="lightlesson/098" class="light-card-link">Sentences with difficult words</a></li>
+      <li class="light-card"><a href="lightlesson/099" class="light-card-link">Sentences with difficult words</a></li>
+      <li class="light-card"><a href="lightlesson/100" class="light-card-link">Left hand only</a></li>
+      <li class="light-card"><a href="lightlesson/101" class="light-card-link">Right hand only</a></li>
+      <li class="light-card"><a href="lightlesson/102" class="light-card-link">Sentences for exercise</a></li>
+      <li class="light-card"><a href="lightlesson/103" class="light-card-link">Sentences for exercise</a></li>
+      <li class="light-card"><a href="lightlesson/104" class="light-card-link">Sentences for exercise</a></li>
+      <li class="light-card"><a href="lightlesson/105" class="light-card-link">Sentences for exercise</a></li>
+      <li class="light-card"><a href="lightlesson/106" class="light-card-link">Sentences for exercise</a></li>
+    </ul>
+  </section>
+  <footer id="light-main-footer" class="light-glass">
+    <p>© 2024 TypeMaster</p>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll(".light-card");
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add("visible");
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      cards.forEach(c => obs.observe(c));
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const completedLessons = JSON.parse(document.body.dataset.completedLessons);
+      console.log('Completed lessons:', completedLessons);
+      document.querySelectorAll('.light-card').forEach(card => {
+        const link = card.querySelector('a');
+        if (!link) return;
+        const segments = link.getAttribute('href').split('/');
+        const lessonNumber = Number(segments.pop());
+        console.log('Lesson number:', lessonNumber);
+        if (Number.isInteger(lessonNumber) && completedLessons.includes(lessonNumber)) {
+          card.classList.add('completed');
+          console.log('Added completed class to card for lesson', lessonNumber);
+        }
+      });
+    });
+  </script>
+  <script>
+    document.querySelectorAll('.light-card').forEach(card => {
+      card.addEventListener('click', function () {
+        card.classList.toggle('completed');
+      });
+    });
+  </script>
+</body>
+
+</html>

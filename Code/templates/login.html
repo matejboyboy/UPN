@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>Login</title>
+    <style>
+      body {
+        background: #151515;
+      }
+  </style>
+</head>
+<body class="dark">
+  <header>
+    <nav id="dark-main-nav" class="dark-glass">
+      <div class="dark-nav-container">
+        <a href="/" id="dark-nav-brand">
+          <span class="dark-logo-primary">Type</span>
+          <span class="dark-logo-secondary">Master</span>
+        </a>
+        <div id="dark-nav-links" class="dark-nav-links">
+          <a href="/words" class="dark-nav-link">Words</a>
+          {% if 'username' in session %}
+            <a href="/profile" class="dark-nav-link">Profile</a>
+          {% else %}
+            <a href="/login" class="dark-nav-link">Login</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+  </header>
+  <form id="login-form" method="POST" action="{{ url_for('login') }}">
+    <h1 class="section-title">Login</h1>
+    <div id="flash-messages">
+      {% for category, msg in get_flashed_messages(with_categories=true) %}
+        <div class="flash {{ category }}">{{ msg }}</div>
+      {% endfor %}
+    </div>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required pattern="^[A-Za-z0-9_-]{3,}$" placeholder="Username">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required minlength="6" placeholder="Password">
+    <button type="submit" id="login-submit" class="button">Login</button>
+  </form>
+  <div class="form-links">
+    <a href="/" class="button button-small">Home</a>
+    <a href="/register" class="button button-small">Register</a>
+    <a href="/lightlogin" class="button button-small">Light Theme</a>
+  </div>
+</body>
+</html>

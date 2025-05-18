@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>Profile (Light)</title>
+  <style>
+    body {
+      background: var(--light-bg); /* #f5f5f5 */
+      color: var(--light-text-primary); /* #333333 */
+    }
+    #profile-card {
+      background: var(--light-form-bg); /* #ffffff */
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+    .username, .join-date {
+      color: var(--light-text-primary); /* #333333 */
+    }
+    .avatar {
+      border: 2px solid var(--light-border); /* #cccccc */
+    }
+  </style>
+</head>
+<body class="light">
+  <header>
+    <nav id="light-main-nav" class="light-glass">
+      <div class="light-nav-container">
+        <a href="/light" id="light-nav-brand">
+          <span class="light-logo-primary">Type</span>
+          <span class="light-logo-secondary">Master</span>
+        </a>
+        <div id="light-nav-links" class="light-nav-links">
+          <a href="/words" class="light-nav-link">Words</a>
+          <a href="/leaderboardLight" class="light-nav-link">Leaderboard</a>
+          {% if 'username' in session %}
+            <a href="/lightprofile" class="light-nav-link">Profile</a>
+          {% else %}
+            <a href="/lightlogin" class="light-nav-link">Login</a>
+          {% endif %}
+          <a href="/profile" class="light-nav-link">Dark</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div id="profile-card">
+    <div class="profile-header">
+      <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=80" alt="Default Profile Picture" class="avatar">
+      <div class="user-info">
+        <div class="username">{{ username }}</div>
+        <div class="join-date">Joined {{ join_date }}</div>
+        <div class="completed-lessons">Completed Lessons: {{ completed_count }}</div>
+      </div>
+    </div>
+  </div>
+  <div id="profile-buttons">
+    <div class="form-links">
+      <a href="/light" class="light-button light-button-small">Lessons</a>
+      <a href="/words" class="light-button light-button-small">Words</a>
+      <a href="/logout" class="light-button light-button-small">Logout</a>
+      <a href="/profile" class="light-button light-button-small">Dark Theme</a>
+    </div>
+  </div>
+</body>
+</html>

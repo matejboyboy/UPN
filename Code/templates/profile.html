@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>Profile</title>
+  <style>
+    body {
+      background: #151515;
+    }
+  </style>
+</head>
+
+<body id="telo">
+  <nav id="dark-main-nav" class="dark-glass">
+    <div class="dark-nav-container">
+      <a href="/" id="dark-nav-brand">
+        <span class="dark-logo-primary">Type</span>
+        <span class="dark-logo-secondary">Master</span>
+      </a>
+      <div id="dark-nav-links" class="dark-nav-links">
+        <a href="/words" class="dark-nav-link">Words</a>
+        <a href="/leaderboard" class="dark-nav-link">Leaderboard</a>
+        {% if 'username' in session %}
+        <a href="/profile" class="dark-nav-link">Profile</a>
+        {% else %}
+        <a href="/login" class="dark-nav-link">Login</a>
+        {% endif %}
+        <a href="/light" class="dark-nav-link">Light</a>
+      </div>
+    </div>
+  </nav>
+  <div id="profile-card">
+    <div class="profile-header">
+      <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=80"
+        alt="Default Profile Picture" class="avatar">
+      <div class="user-info">
+        <div class="username">{{ username }}</div>
+        <div class="join-date">Joined {{ join_date }}</div>
+        <div class="completed-lessons">Completed Lessons: {{ completed_count }}</div>
+      </div>
+    </div>
+  </div>
+  <div id="profile-buttons">
+    <div class="form-links">
+      <a href="/" class="button button-small">Lessons</a>
+      <a href="/words" class="button button-small">Words</a>
+      <a href="/logout" class="button button-small">Logout</a>
+      <a href="/lightprofile" class="button button-small">Light Theme</a>
+    </div>
+  </div>
+</body>
+
+</html>

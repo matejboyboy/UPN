@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>Register</title>
+    <style>
+      body {
+        background: #151515;
+      }
+  </style>
+</head>
+<body id="telo">
+  <nav id="dark-main-nav" class="dark-glass">
+    <div class="dark-nav-container">
+      <a href="/" id="dark-nav-brand">
+        <span class="dark-logo-primary">Type</span>
+        <span class="dark-logo-secondary">Master</span>
+      </a>
+      <div id="dark-nav-links" class="dark-nav-links">
+        <a href="/words" class="dark-nav-link">Words</a>
+        {% if 'username' in session %}
+          <a href="/profile" class="dark-nav-link">Profile</a>
+        {% else %}
+          <a href="/login" class="dark-nav-link">Login</a>
+        {% endif %}
+        <a href="/lightregister" class="dark-nav-link">Light</a>
+      </div>
+    </div>
+  </nav>
+  <form id="login-form" method="POST" action="{{ url_for('register') }}">
+    <h1 class="section-title">Register</h1>
+    <div id="flash-messages">
+      {% for category, msg in get_flashed_messages(with_categories=true) %}
+        <div class="flash {{ category }}">{{ msg }}</div>
+      {% endfor %}
+    </div>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required minlength="3" pattern="^[A-Za-z0-9_-]{3,}$" placeholder="Username" value="{{ username if username else '' }}">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required minlength="6" placeholder="Password">
+    <button type="submit" id="register-submit">Register</button>
+  </form>
+  <div class="form-links">
+    <a href="/login" class="button button-small">Back to Login</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <title>Leaderboard (Light)</title>
+    </head>
+    <body class="light">
+        <nav id="light-main-nav" class="light-glass">
+            <div class="light-nav-container">
+                <a href="/light" id="light-nav-brand">
+                    <span class="light-logo-primary">Type</span>
+                    <span class="light-logo-secondary">Master</span>
+                </a>
+                <div id="light-nav-links" class="light-nav-links">
+                    <a href="/words" class="light-nav-link">Words</a>
+                    <a href="/leaderboardLight" class="light-nav-link">Leaderboard</a>
+                    {% if 'username' in session %}
+                    <a href="/lightprofile" class="light-nav-link">Profile</a>
+                    {% else %}
+                    <a href="/lightlogin" class="light-nav-link">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        <section class="leaderboard-section">
+            <h2 class="section-title">Leaderboard</h2>
+            {% if leaders %}
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Lessons Completed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for leader in leaders %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ leader[0] }}</td>
+                        <td>{{ leader[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="no-data">No data available</p>
+            {% endif %}
+        </section>
+        <footer id="light-main-footer" class="light-glass">
+            <p>© 2024 TypeMaster</p>
+        </footer>
+    </body>
+    </html>
