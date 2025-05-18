@@ -1,0 +1,4 @@
+pip install FastApi
+pip install uvicorn
+
+v console da zalaufas main.py: python -m uvicorn main:app --reload
