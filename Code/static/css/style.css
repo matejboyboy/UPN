@@ -19,17 +19,16 @@
     --light-border: #cccccc;
 }
 
-/* Universal styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* HTML and Body styles */
 html {
     height: 100%;
 }
+
 body {
     background: none;
     color: var(--text-primary);
@@ -41,45 +40,12 @@ body {
     height: 100%;
     min-height: 100vh;
 }
+
 .dark body {
-    background: #151515;
-    background: var(--dark-bg); /* #1a1a1a */
-    color: var(--text-primary); /* #f0f0f0 */
-}
-
-/* Deprecated dark theme navbar styles (to be deleted after updating templates) */
-.glass {
-    backdrop-filter: blur(8px);
-    background: rgba(30, 30, 30, 0.5);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.nav-links, #nav-links {
-    display: flex;
-    gap: 1.5rem;
-}
-.nav-link {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-.nav-link:hover {
-    background: var(--hover-effect);
+    background: var(--dark-bg);
     color: var(--text-primary);
-    transform: translateY(-2px);
 }
 
-/* Dark theme navbar styles */
 #dark-nav-brand {
     font-size: 2rem;
     font-weight: 700;
@@ -88,16 +54,21 @@ body {
     letter-spacing: 1px;
     transition: color 0.3s;
 }
+
 #dark-nav-brand:hover {
     color: var(--accent);
 }
+
 .dark-logo-primary {
     color: var(--accent);
 }
+
 .dark-logo-secondary {
     color: var(--text-primary);
 }
-#dark-main-nav, .dark-main-nav {
+
+#dark-main-nav,
+.dark-main-nav {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     background: var(--dark-nav-bg);
@@ -106,8 +77,15 @@ body {
     top: 0 !important;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(26, 26, 26, 0.9); /* Slightly darker for visibility */
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
 }
+
+#dark-main-nav * {
+    font-family: 'Roboto', sans-serif;
+}
+
 .dark-nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -116,11 +94,15 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-.dark-nav-links, #dark-nav-links {
+
+.dark-nav-links,
+#dark-nav-links {
     display: flex;
     gap: 1.5rem;
 }
-.dark-nav-links a, .dark-nav-link {
+
+.dark-nav-links a,
+.dark-nav-link {
     color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
@@ -128,56 +110,67 @@ body {
     border-radius: 4px;
     transition: all 0.3s ease;
 }
-.dark-nav-links a:hover, .dark-nav-link:hover {
+
+.dark-nav-links a:hover,
+.dark-nav-link:hover {
     background: var(--hover-effect);
     color: var(--text-primary);
     transform: translateY(-2px);
 }
+
 .dark-profile-info {
     color: var(--text-primary);
     font-size: 1.2rem;
 }
 
-/* Content styles */
-.content-container, section {
+.content-container,
+section {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 2rem;
 }
-.lesson-section, .lesson-section.alt-bg {
+
+.lesson-section,
+.lesson-section.alt-bg {
     background: var(--accent);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     padding: 2rem;
     z-index: 1;
 }
+
 .lesson-section.alt-bg {
     background: #2e2e2e;
 }
+
 .section-title {
     display: flex;
     align-items: center;
     font-family: 'Roboto Slab', serif;
     font-weight: 600;
     font-size: 1.75rem;
-    color: var(--text-primary);
     margin-bottom: 1rem;
 }
+
 .section-icon {
     width: 1.5em;
     height: 1.5em;
     fill: var(--accent);
     margin-right: 0.5em;
 }
+
 .lesson-list {
     list-style: none;
     margin: 1rem 0;
     padding: 0;
 }
-.lesson-list > li {
+
+.lesson-list>li {
     margin-bottom: 1rem;
 }
-.card-link, .lesson-list a {
+
+.card-link,
+.lesson-list a {
     display: block;
     padding: 1rem;
     background: #262626;
@@ -188,22 +181,25 @@ body {
     color: var(--text-primary);
     transition: all 0.2s ease;
 }
-.card-link:hover, .lesson-list a:hover {
+
+.card-link:hover,
+.lesson-list a:hover {
     transform: translateX(8px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
     border-left-color: var(--accent);
 }
+
 .card.visible {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
 .card {
     opacity: 0;
     transform: translateY(20px);
 }
 
-/* Form styles */
 #telo {
     display: flex;
     flex-direction: column;
@@ -212,8 +208,9 @@ body {
     padding-top: 5vh;
     min-height: 100vh;
 }
+
 #login-form {
-    background: var(--form-bg); /* #2d2d2d */
+    background: var(--form-bg);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -221,11 +218,13 @@ body {
     width: 100%;
     margin: 2rem auto;
 }
+
 #login-form label {
     display: block;
     margin-bottom: 5px;
-    color: var(--text-secondary); /* #888 */
+    color: var(--text-secondary);
 }
+
 #login-form input {
     width: 100%;
     padding: 10px;
@@ -233,12 +232,15 @@ body {
     border: 1px solid #555;
     border-radius: 5px;
     background: #444;
-    color: var(--text-primary); /* #f0f0f0 */
+    color: var(--text-primary);
 }
+
 #login-form input::placeholder {
-    color: var(--text-secondary); /* #888 */
+    color: var(--text-secondary);
 }
-#login-submit, #register-submit {
+
+#login-submit,
+#register-submit {
     width: 100%;
     padding: 10px;
     background: var(--accent);
@@ -249,24 +251,28 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-#login-submit:hover, #register-submit:hover {
+
+#login-submit:hover,
+#register-submit:hover {
     background: var(--accent-dark);
 }
+
 .flash {
     padding: 0.75rem 1rem;
     border-radius: 4px;
     margin-bottom: 0.5rem;
 }
+
 .flash.error {
     background: #fdd;
     color: #900;
 }
+
 .flash.success {
     background: #dfd;
     color: #090;
 }
 
-/* Profile styles */
 #profile-card {
     background: linear-gradient(145deg, #2b2b2b, #333333);
     padding: 2rem;
@@ -278,11 +284,13 @@ body {
     color: var(--text-secondary);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .profile-header {
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
 }
+
 .avatar {
     width: 80px;
     height: 80px;
@@ -291,12 +299,13 @@ body {
     object-fit: cover;
     border: 2px solid var(--accent);
 }
+
 .user-info .username {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
+
 .user-info .join-date {
     font-size: 0.95rem;
     color: var(--text-secondary);
@@ -306,17 +315,20 @@ body {
     display: inline-block;
     border: 1px solid var(--accent);
 }
+
 #profile-buttons {
     margin-top: 1rem;
     display: flex;
     justify-content: center;
 }
+
 .form-links {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .button-small {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
@@ -330,13 +342,13 @@ body {
     transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
+
 .button-small:hover {
     background: var(--accent-dark);
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Button styles */
 .button {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -351,11 +363,13 @@ body {
     transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
+
 .button:hover {
     background: var(--accent-dark);
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
 }
+
 button {
     margin: 1rem auto 0;
     display: block;
@@ -369,23 +383,23 @@ button {
     transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
+
 button:hover {
     background: var(--accent-dark);
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Input focus styles */
 #login-form input:focus,
 #register-form input:focus {
     border-color: var(--accent);
     box-shadow: 0 0 5px var(--accent);
 }
+
 #register-form {
     margin-top: 0.9rem;
 }
 
-/* Footer styles */
 #main-footer {
     position: fixed;
     bottom: 0;
@@ -397,37 +411,44 @@ button:hover {
     font-size: 0.9rem;
     z-index: 1000;
 }
+
 #main-footer p {
     margin: 0;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
-    .dark-nav-container, #dark-main-nav .dark-nav-container {
+
+    .dark-nav-container,
+    #dark-main-nav .dark-nav-container {
         flex-direction: column;
         gap: 1rem;
         padding: 1rem;
     }
+
     #login-form {
         padding: 15px;
     }
+
     .lesson-list a {
         padding: 0.75rem 1rem;
     }
 }
+
 @media (max-width: 480px) {
     .section-title {
         font-size: 1.2rem;
     }
+
     .lesson-list a {
         font-size: 0.9rem;
     }
-    #login-submit, #register-submit {
+
+    #login-submit,
+    #register-submit {
         font-size: 0.9rem;
     }
 }
 
-/* Lesson-specific styles */
 .lesson body {
     margin: 0;
     min-height: 100vh;
@@ -439,30 +460,35 @@ button:hover {
     font-family: 'Courier New', monospace;
     color: #e0e0e0;
 }
+
 .lesson #main {
     position: relative;
     width: 80%;
-    max-width: 600px;
+    max-width: 1200px;
     padding: 2rem;
-    background: #1f1f23;
+    background: #16161a;
     border-radius: 8px;
     margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
 .lesson #word {
     font-size: 2rem;
     line-height: 1.4;
-    color: #555;
+    color: #e0e0e0;
+    background: transparent;
     white-space: pre-wrap;
     word-break: break-word;
     user-select: none;
 }
+
 .lesson .green_letter {
     color: #a9ff68;
 }
+
 .lesson .red_letter {
     color: #ff5c57;
 }
+
 .lesson .inputField {
     position: absolute;
     top: 0;
@@ -485,19 +511,26 @@ button:hover {
     z-index: 1;
     opacity: 0;
 }
+
 .lesson #text {
     display: none;
 }
-.lesson #timer, .lesson #timer2, .lesson #start, .lesson #end {
+
+.lesson #timer,
+.lesson #timer2,
+.lesson #start,
+.lesson #end {
     margin-top: 1rem;
     text-align: center;
     color: #ccc;
 }
+
 .lesson .end {
     color: #a9ff68;
     font-size: 1.5rem;
     text-align: center;
 }
+
 .lesson .dark-glass {
     background: var(--dark-nav-bg);
     backdrop-filter: blur(8px);
@@ -507,8 +540,8 @@ button:hover {
     top: 0 !important;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(26, 26, 26, 0.9);
 }
+
 .lesson .dark-nav-container {
     display: flex;
     justify-content: space-between;
@@ -516,24 +549,30 @@ button:hover {
     max-width: 1200px;
     margin: 0 auto;
 }
+
 .lesson #dark-nav-brand {
     text-decoration: none;
     font-size: 1.5rem;
 }
+
 .lesson .dark-logo-primary {
     color: var(--accent);
 }
+
 .lesson .dark-logo-secondary {
     color: var(--text-primary);
 }
+
 .lesson .dark-nav-links {
     display: flex;
     gap: 1rem;
 }
+
 .lesson .dark-lesson-info {
     color: var(--text-primary);
     font-size: 1.2rem;
 }
+
 .lesson #dark-nav-buttons {
     display: flex;
     gap: 1rem;
@@ -541,6 +580,7 @@ button:hover {
     margin-bottom: 1rem;
     z-index: 2;
 }
+
 .lesson .button-small {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -553,13 +593,13 @@ button:hover {
     transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
+
 .lesson .button-small:hover {
     background: var(--accent-dark);
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Light theme styles */
 .light {
     --light-bg: #ffffff;
     --light-nav-bg: #ffffff;
@@ -584,6 +624,7 @@ button:hover {
     height: 100%;
     min-height: 100vh;
 }
+
 .light #light-nav-brand {
     font-size: 2rem;
     font-weight: 700;
@@ -592,16 +633,21 @@ button:hover {
     letter-spacing: 1px;
     transition: color 0.3s;
 }
+
 .light #light-nav-brand:hover {
     color: var(--accent);
 }
+
 .light .light-logo-primary {
     color: var(--accent);
 }
+
 .light .light-logo-secondary {
     color: var(--light-text-primary);
 }
-.light #light-main-nav, .light .light-main-nav {
+
+.light #light-main-nav,
+.light .light-main-nav {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     background: rgba(255, 255, 255, 0.7);
@@ -611,6 +657,7 @@ button:hover {
     width: 100%;
     z-index: 1000;
 }
+
 .light .light-nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -619,11 +666,15 @@ button:hover {
     justify-content: space-between;
     align-items: center;
 }
-.light .light-nav-links, .light #light-nav-links {
+
+.light .light-nav-links,
+.light #light-nav-links {
     display: flex;
     gap: 1.5rem;
 }
-.light .light-nav-links a, .light .light-nav-link {
+
+.light .light-nav-links a,
+.light .light-nav-link {
     color: var(--light-text-secondary);
     text-decoration: none;
     font-weight: 500;
@@ -631,30 +682,39 @@ button:hover {
     border-radius: 4px;
     transition: all 0.3s ease;
 }
-.light .light-nav-links a:hover, .light .light-nav-link:hover {
+
+.light .light-nav-links a:hover,
+.light .light-nav-link:hover {
     background: var(--light-hover-effect);
     color: var(--light-text-primary);
     transform: translateY(-2px);
 }
+
 .light .light-profile-info {
     color: var(--light-text-primary);
     font-size: 1.2rem;
 }
-.light .light-content-container, .light section {
+
+.light .light-content-container,
+.light section {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 2rem;
 }
-.light .light-lesson-section, .light .light-lesson-section.light-alt-bg {
+
+.light .light-lesson-section,
+.light .light-lesson-section.light-alt-bg {
     background: var(--light-card-bg);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 2rem;
     z-index: 1;
 }
+
 .light .light-lesson-section.light-alt-bg {
     background: var(--light-alt-bg);
 }
+
 .light .light-section-title {
     display: flex;
     align-items: center;
@@ -664,21 +724,26 @@ button:hover {
     color: var(--light-text-primary);
     margin-bottom: 1rem;
 }
+
 .light .light-section-icon {
     width: 1.5em;
     height: 1.5em;
     fill: var(--accent);
     margin-right: 0.5em;
 }
+
 .light .light-lesson-list {
     list-style: none;
     margin: 1rem 0;
     padding: 0;
 }
-.light .light-lesson-list > li {
+
+.light .light-lesson-list>li {
     margin-bottom: 1rem;
 }
-.light .light-card-link, .light .light-lesson-list a {
+
+.light .light-card-link,
+.light .light-lesson-list a {
     display: block;
     padding: 1rem;
     background: var(--light-card-bg);
@@ -689,20 +754,25 @@ button:hover {
     color: var(--light-text-primary);
     transition: all 0.2s ease;
 }
-.light .light-card-link:hover, .light .light-lesson-list a:hover {
+
+.light .light-card-link:hover,
+.light .light-lesson-list a:hover {
     transform: translateX(8px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     border-left-color: var(--accent);
 }
+
 .light .light-card.visible {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
 .light .light-card {
     opacity: 0;
     transform: translateY(20px);
 }
+
 .light #light-telo {
     display: flex;
     flex-direction: column;
@@ -710,6 +780,7 @@ button:hover {
     justify-content: center;
     min-height: 100vh;
 }
+
 .light #light-login-form {
     background: var(--light-form-bg);
     padding: 2rem;
@@ -719,11 +790,13 @@ button:hover {
     width: 100%;
     margin: 2rem auto;
 }
+
 .light #light-login-form label {
     display: block;
     margin-bottom: 5px;
     color: var(--light-text-secondary);
 }
+
 .light #light-login-form input {
     width: 100%;
     padding: 10px;
@@ -733,10 +806,13 @@ button:hover {
     background: var(--light-input-bg);
     color: var(--light-text-primary);
 }
+
 .light #light-login-form input::placeholder {
     color: var(--light-text-secondary);
 }
-.light #light-login-submit, .light #light-register-submit {
+
+.light #light-login-submit,
+.light #light-register-submit {
     width: 100%;
     padding: 10px;
     background: var(--accent);
@@ -747,22 +823,28 @@ button:hover {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-.light #light-login-submit:hover, .light #light-register-submit:hover {
+
+.light #light-login-submit:hover,
+.light #light-register-submit:hover {
     background: var(--accent-dark);
 }
+
 .light .light-flash {
     padding: 0.75rem 1rem;
     border-radius: 4px;
     margin-bottom: 0.5rem;
 }
+
 .light .light-flash.error {
     background: #f8d7da;
     color: #721c24;
 }
+
 .light .light-flash.success {
     background: #d4edda;
     color: #155724;
 }
+
 .light #light-profile-card {
     background: var(--light-form-bg);
     padding: 30px;
@@ -773,30 +855,36 @@ button:hover {
     margin: 40px auto;
     color: var(--light-text-secondary);
 }
+
 .light .light-profile-header {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
+
 .light .light-avatar {
     font-size: 64px;
     color: var(--accent);
     margin-right: 20px;
 }
+
 .light .light-user-info .username {
     font-size: 1.8em;
     font-weight: bold;
     color: var(--light-text-primary);
 }
+
 .light .light-user-info .join-date {
     font-size: 0.9em;
     margin-top: 5px;
 }
+
 .light .light-button-small {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     line-height: 1;
 }
+
 .light .light-button {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -811,11 +899,13 @@ button:hover {
     transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
+
 .light .light-button:hover {
     background: var(--accent-dark);
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
+
 .light button {
     margin: 1rem auto 0;
     display: block;
@@ -829,21 +919,26 @@ button:hover {
     transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
+
 .light button:hover {
     background: var(--accent-dark);
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
-.light #light-login-form input:focus, .light #light-register-form input:focus {
+
+.light #light-login-form input:focus,
+.light #light-register-form input:focus {
     border-color: var(--accent);
     box-shadow: 0 0 5px var(--accent);
 }
+
 .light .light-form-links {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
 }
+
 .light .light-glass {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -851,6 +946,7 @@ button:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
+
 .light #light-main-footer {
     position: fixed;
     bottom: 0;
@@ -862,33 +958,44 @@ button:hover {
     font-size: 0.9rem;
     z-index: 1000;
 }
+
 .light #light-main-footer p {
     margin: 0;
 }
+
 @media (max-width: 768px) {
-    .light .light-nav-container, .light #light-main-nav .light-nav-container {
+
+    .light .light-nav-container,
+    .light #light-main-nav .light-nav-container {
         flex-direction: column;
         gap: 1rem;
         padding: 1rem;
     }
+
     .light #light-login-form {
         padding: 15px;
     }
+
     .light .light-lesson-list a {
         padding: 0.75rem 1rem;
     }
 }
+
 @media (max-width: 480px) {
     .light .light-section-title {
         font-size: 1.2rem;
     }
+
     .light .light-lesson-list a {
         font-size: 0.9rem;
     }
-    .light #light-login-submit, .light #light-register-submit {
+
+    .light #light-login-submit,
+    .light #light-register-submit {
         font-size: 0.9rem;
     }
 }
+
 .light.lesson body {
     margin: 0;
     height: 100vh;
@@ -896,34 +1003,39 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--light-bg); /* Now #ffffff */
+    background: var(--light-bg);
     font-family: 'Courier New', monospace;
-    color: var(--light-text-primary); /* Now #1a1a1a */
+    color: var(--light-text-primary);
 }
+
 .light.lesson #light-main {
     position: relative;
     width: 80%;
-    max-width: 600px;
+    max-width: 1200px;
     padding: 2rem;
-    background: var(--light-form-bg); /* #ffffff */
+    background: var(--light-form-bg);
     border-radius: 8px;
     margin-bottom: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .light.lesson #light-word {
     font-size: 2rem;
     line-height: 1.4;
-    color: var(--light-text-secondary); /* #666666 */
+    color: var(--light-text-secondary);
     white-space: pre-wrap;
     word-break: break-word;
     user-select: none;
 }
+
 .light.lesson .green_letter {
-    color: #28a745; /* Green for correct letters */
+    color: #28a745;
 }
+
 .light.lesson .red_letter {
-    color: #dc3545; /* Red for incorrect letters */
+    color: #dc3545;
 }
+
 .light.lesson .light-inputField {
     position: absolute;
     top: 0;
@@ -937,8 +1049,8 @@ button:hover {
     font-family: 'Courier New', monospace;
     border: none;
     background: transparent;
-    color: transparent; /* Hide text, shown via #light-word */
-    caret-color: transparent; /* Hide cursor */
+    color: transparent;
+    caret-color: transparent;
     outline: none;
     white-space: pre-wrap;
     word-break: break-word;
@@ -946,25 +1058,30 @@ button:hover {
     z-index: 1;
     opacity: 0;
 }
+
 .light.lesson .light-inputField:focus {
-    color: black; /* Fallback for debugging or if JS fails */
+    color: black;
 }
+
 .light.lesson #light-text {
     display: none;
 }
+
 .light.lesson #light-timer,
 .light.lesson #light-timer2,
 .light.lesson #light-start,
 .light.lesson #light-end {
     margin-top: 1rem;
     text-align: center;
-    color: var(--light-text-secondary); /* #666666 */
+    color: var(--light-text-secondary);
 }
+
 .light.lesson .end {
-    color: #28a745; /* Green for end message */
+    color: #28a745;
     font-size: 1.5rem;
     text-align: center;
 }
+
 .light.lesson .light-glass {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(8px);
@@ -975,6 +1092,7 @@ button:hover {
     width: 100%;
     z-index: 1000;
 }
+
 .light.lesson .light-nav-container {
     display: flex;
     justify-content: space-between;
@@ -982,24 +1100,30 @@ button:hover {
     max-width: 1200px;
     margin: 0 auto;
 }
+
 .light.lesson #light-nav-brand {
     text-decoration: none;
     font-size: 1.5rem;
 }
+
 .light.lesson .light-logo-primary {
     color: var(--accent);
 }
+
 .light.lesson .light-logo-secondary {
     color: var(--light-text-primary);
 }
+
 .light.lesson .light-nav-links {
     display: flex;
     gap: 1rem;
 }
+
 .light.lesson .light-lesson-info {
     color: var(--light-text-primary);
     font-size: 1.2rem;
 }
+
 .light.lesson #light-nav-buttons {
     display: flex;
     gap: 1rem;
@@ -1007,6 +1131,7 @@ button:hover {
     margin-bottom: 1rem;
     z-index: 2;
 }
+
 .light.lesson .light-button-small {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -1019,11 +1144,13 @@ button:hover {
     transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
+
 .light.lesson .light-button-small:hover {
     background: var(--accent-dark);
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
+
 .leaderboard-section {
     background: #2e2e2e;
     border-radius: 8px;
@@ -1038,7 +1165,8 @@ button:hover {
     border-collapse: collapse;
 }
 
-.leaderboard-table th, .leaderboard-table td {
+.leaderboard-table th,
+.leaderboard-table td {
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #444;
@@ -1067,17 +1195,19 @@ button:hover {
     text-align: center;
     font-size: 1.2rem;
 }
+
 .light .section-title {
     color: #000000;
 }
+
 .light #register-form input {
     border: 1px solid var(--light-border);
     background: var(--light-input-bg);
     color: var(--light-text-primary);
 }
-/* Light Theme Leaderboard Styles */
+
 .light .leaderboard-section {
-    background: var(--light-alt-bg); /* #e8ecef */
+    background: var(--light-alt-bg);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 2rem;
@@ -1094,16 +1224,16 @@ button:hover {
 .light .leaderboard-table td {
     padding: 1rem;
     text-align: left;
-    border-bottom: 1px solid var(--light-border); /* #cccccc */
+    border-bottom: 1px solid var(--light-border);
 }
 
 .light .leaderboard-table th {
     background: #f0f0f0;
-    color: var(--light-text-primary); /* #1a1a1a */
+    color: var(--light-text-primary);
 }
 
 .light .leaderboard-table td {
-    color: var(--light-text-secondary); /* #666666 */
+    color: var(--light-text-secondary);
 }
 
 .light .leaderboard-table tr:hover {
@@ -1116,69 +1246,22 @@ button:hover {
 }
 
 .light .no-data {
-    color: var(--light-text-secondary); /* #666666 */
+    color: var(--light-text-secondary);
     text-align: center;
     font-size: 1.2rem;
 }
-/* Light Theme Leaderboard Styles */
-.light .leaderboard-section {
-    background: var(--light-alt-bg); /* #e8ecef */
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    margin: 2rem auto;
-    max-width: 800px;
-}
 
-.light .leaderboard-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.light .leaderboard-table th,
-.light .leaderboard-table td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid var(--light-border); /* #cccccc */
-}
-
-.light .leaderboard-table th {
-    background: #f0f0f0;
-    color: var(--light-text-primary); /* #1a1a1a */
-}
-
-.light .leaderboard-table td {
-    color: var(--light-text-secondary); /* #666666 */
-}
-
-.light .leaderboard-table tr:hover {
-    background: #f9f9f9;
-}
-
-.light .leaderboard-table th:first-child,
-.light .leaderboard-table td:first-child {
-    text-align: center;
-}
-
-.light .no-data {
-    color: var(--light-text-secondary); /* #666666 */
-    text-align: center;
-    font-size: 1.2rem;
-}
-/* Existing light login form input styling */
 #light-login-form input {
-  background-color: white;
-  border: 1px solid #ccc;
-  /* ... other styling ... */
+    background-color: white;
+    border: 1px solid #ccc;
 }
 
-/* New rule: Add gold star icon to completed light-mode cards */
 .light-card.completed::after {
-  content: '★';
-  color: gold;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5em;
+    content: '★';
+    color: gold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
 }
 
