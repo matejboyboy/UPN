@@ -20,22 +20,22 @@ document.addEventListener('keydown', function (event) {
         if (counter % 2 === 0) {
             CapsLock.className = 'hide';
         } else {
-            CapsLock.classList.remove("hide")
+            CapsLock.classList.remove("hide");
             CapsLock.textContent = 'CAPS LOCK';
         }
     }
 });
+
 let CapsLock = document.getElementById('CapsLockWarning');
 
-function CapsLockCheck(event){
+function CapsLockCheck(event) {
     if (event.getModifierState('CapsLock')) {
-        CapsLock.classList.remove("hide")
+        CapsLock.classList.remove("hide");
         CapsLock.textContent = 'CAPS LOCK';
     } else {
         CapsLock.className = 'hide';
     }
-};
-
+}
 
 document.addEventListener('keydown', function (event) {
     let keyPressed = event.key;
@@ -54,5 +54,4 @@ document.addEventListener('keydown', function (event) {
         input.textContent += keyPressed;
     }
     CapsLockCheck(event);
-
 });
