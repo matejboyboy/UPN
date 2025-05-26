@@ -1,0 +1,35 @@
+CREATE DATABASE IF NOT EXISTS flask_users
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci;
+
+USE flask_users;
+
+CREATE TABLE completed_lessons (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    lesson_number INT(11) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY username_lesson_number (username, lesson_number)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE tbl_users (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    registration_date DATE DEFAULT NULL,
+    best_wpm INT(11) DEFAULT NULL,
+    profile_picture VARCHAR(255) DEFAULT 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=80',
+    theme_preference VARCHAR(10) DEFAULT 'dark',
+    PRIMARY KEY (id),
+    UNIQUE KEY username (username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE user_wpm_scores (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    word_count INT(11) DEFAULT NULL,
+    time_seconds INT(11) DEFAULT NULL,
+    best_wpm INT(11) DEFAULT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY username_word_count_time (username, word_count, time_seconds)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
