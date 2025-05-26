@@ -132,6 +132,37 @@
       font-size: 1.2rem;
       color: var(--text-primary);
     }
+
+    #dark-main-nav {
+      width: 100vw;
+      left: 0;
+    }
+    .hide{
+      display: none !important;
+    }
+    span.cursor {
+      position: relative;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cursor::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      background-color: rgb(103, 103, 255);
+      height: 1em;
+      top: 0.2em;
+      left: -2px;
+      animation-name: blink;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-timing-function: steps(1, end);
+    }
+    .missed_space {
+      background-color: #ff5c57;
+    }
   </style>
 </head>
 
@@ -145,6 +176,7 @@
         </a>
         <div id="dark-nav-links" class="dark-nav-links">
           <a href="/words" class="dark-nav-link">Words</a>
+          <a href="/leaderboard" class="dark-nav-link">Leaderboard</a>
           {% if 'username' in session %}
           <a href="/profile" class="dark-nav-link">Profile</a>
           {% else %}
@@ -162,12 +194,15 @@
     {% if lesson_number > 1 %}
     <a href="{{ url_for('display_lesson', lesson_number=lesson_number - 1) }}" class="button-small">Previous Lesson</a>
     {% endif %}
-    <a href="{{ url_for('display_lesson', lesson_number=lesson_number + 1) }}" class="button-small">Next Lesson</a>
+    {% if lesson_number < 106 %} <a href="{{ url_for('display_lesson', lesson_number=lesson_number + 1) }}" class="button-small hide" id="next_lesson">Next Lesson</a>
+      {% endif %}
   </div>
+  <div id="CapsLockWarning" class=""></div>
 
   <div id="main">
     <div id="word"></div>
-    <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
+    <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+      autofocus>
   </div>
 
   <div id="wpm"></div>
@@ -178,26 +213,25 @@
   <script src="../static/js/typing_logic.js"></script>
   <script src="../static/js/lessons.js"></script>
   <script>
-     const lessonNumber = "{{ lesson_number }}";
+    const lessonNumber = "{{ lesson_number }}";
     function onLessonComplete() {
-        fetch(`/complete_lesson/${lessonNumber}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
+      fetch(`/complete_lesson/${lessonNumber}`, { // Ustvari rout ki določi kateri lesson je bil končan.
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
-                console.log('Lesson completed');
-            } else {
-                console.error('Error completing lesson');
-            }
+          if (data.success) {
+            console.log('Lesson completed');
+          } else {
+            console.error('Error completing lesson');
+          }
         })
         .catch(error => console.error('Error:', error));
     }
-    // Call onLessonComplete() in your existing logic where lesson completion is detected
-</script>
+  </script>
 </body>
 
 </html>

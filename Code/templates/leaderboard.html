@@ -1,16 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <title>Leaderboard</title>
+    <title>Leaderboard - TypeMaster</title>
+    <link rel="stylesheet" href="../static/css/style.css">
     <style>
-    body {
-      background: #151515;
-    }
+        body {
+            background: var(--dark-bg);
+        }
+
+        #main-content {
+            width: 90%;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: var(--form-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        h2 {
+            color: var(--text-primary);
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+            font-size: 1.75rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-indicator {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        #leaderboard-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .leaderboard-button {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .leaderboard-button:hover {
+            color: var(--text-primary);
+            background: var(--hover-effect);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .leaderboard-button.active {
+            color: var(--accent);
+            background: rgba(103, 103, 255, 0.2);
+            border-color: var(--accent);
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #262626;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        th,
+        td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: #333;
+            color: var(--text-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) {
+            background: #2e2e32;
+        }
+
+        tr:nth-child(odd) {
+            background: #26262a;
+        }
+
+        tr:hover {
+            background: rgba(58, 58, 60, 0.7);
+            transition: background 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            #main-content {
+                width: 95%;
+                margin: 1.5rem auto;
+                padding: 1rem;
+            }
+
+            .leaderboard-button {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
+
+            th,
+            td {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .category-indicator {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
+
 <body class="dark">
     <nav id="dark-main-nav" class="dark-glass">
         <div class="dark-nav-container">
@@ -19,7 +154,7 @@
                 <span class="dark-logo-secondary">Master</span>
             </a>
             <div id="dark-nav-links" class="dark-nav-links">
-                <a href="/words" class="dark-nav-link">Words</a>
+                <a href="/words" class="dark-nav-link">Lessons</a>
                 <a href="/leaderboard" class="dark-nav-link">Leaderboard</a>
                 {% if 'username' in session %}
                 <a href="/profile" class="dark-nav-link">Profile</a>
@@ -29,15 +164,34 @@
             </div>
         </div>
     </nav>
-    <section class="leaderboard-section">
-        <h2 class="section-title">Leaderboard</h2>
-        {% if leaders %}
-        <table class="leaderboard-table">
+    <div id="main-content">
+        <h2>Leaderboard</h2>
+        <div id="leaderboard-options">
+            <button onclick="location.href='/leaderboard?category=classes'"
+                class="leaderboard-button {% if category == 'classes' %}active{% endif %}">Classes</button>
+            <button onclick="location.href='/leaderboard?category=wpm15'"
+                class="leaderboard-button {% if category == 'wpm15' %}active{% endif %}">15 Words</button>
+            <button onclick="location.href='/leaderboard?category=wpm30'"
+                class="leaderboard-button {% if category == 'wpm30' %}active{% endif %}">30 Words</button>
+            <button onclick="location.href='/leaderboard?category=wpm45'"
+                class="leaderboard-button {% if category == 'wpm45' %}active{% endif %}">45 Words</button>
+            <button onclick="location.href='/leaderboard?category=wpm50'"
+                class="leaderboard-button {% if category == 'wpm50' %}active{% endif %}">50 Words</button>
+            <button onclick="location.href='/leaderboard?category=time15'"
+                class="leaderboard-button {% if category == 'time15' %}active{% endif %}">15s</button>
+            <button onclick="location.href='/leaderboard?category=time30'"
+                class="leaderboard-button {% if category == 'time30' %}active{% endif %}">30s</button>
+            <button onclick="location.href='/leaderboard?category=time40'"
+                class="leaderboard-button {% if category == 'time40' %}active{% endif %}">40s</button>
+            <button onclick="location.href='/leaderboard?category=time50'"
+                class="leaderboard-button {% if category == 'time50' %}active{% endif %}">50s</button>
+        </div>
+        <table>
             <thead>
                 <tr>
                     <th>Rank</th>
                     <th>Username</th>
-                    <th>Lessons Completed</th>
+                    <th>Score</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,12 +204,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        {% else %}
-        <p class="no-data">No data available</p>
-        {% endif %}
-    </section>
-    <footer id="main-footer" class="glass">
-        <p>© 2024 TypeMaster</p>
-    </footer>
+    </div>
 </body>
+
 </html>

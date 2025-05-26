@@ -1,56 +1,265 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/static/css/style.css">
-        <title>Leaderboard (Light)</title>
-    </head>
-    <body class="light">
-        <nav id="light-main-nav" class="light-glass">
-            <div class="light-nav-container">
-                <a href="/light" id="light-nav-brand">
-                    <span class="light-logo-primary">Type</span>
-                    <span class="light-logo-secondary">Master</span>
-                </a>
-                <div id="light-nav-links" class="light-nav-links">
-                    <a href="/words" class="light-nav-link">Words</a>
-                    <a href="/leaderboardLight" class="light-nav-link">Leaderboard</a>
-                    {% if 'username' in session %}
-                    <a href="/lightprofile" class="light-nav-link">Profile</a>
-                    {% else %}
-                    <a href="/lightlogin" class="light-nav-link">Login</a>
-                    {% endif %}
-                </div>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard (Light) - TypeMaster</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        #light-main-nav {
+            width: 100vw;
+            left: 0;
+        }
+
+        .leaderboard-section {
+            width: 90%;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .light-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .leaderboard-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .section-title {
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+            font-size: 1.75rem;
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+
+        #leaderboard-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .leaderboard-section .leaderboard-button {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            background: transparent;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--light-text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .leaderboard-section .leaderboard-button:hover {
+            background: var(--light-hover-effect);
+            color: var(--light-text-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .leaderboard-section .leaderboard-button.active {
+            color: var(--accent);
+            background: rgba(103, 103, 255, 0.2);
+            border-color: var(--accent);
+            font-weight: 500;
+        }
+
+        .table-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-overlay-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+            font-size: 1.75rem;
+            color: #000000;
+            text-align: center;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        th,
+        td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        th {
+            background: #f0f0f0;
+            color: #333;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background: #ffffff;
+        }
+
+        tr:hover {
+            background: #e8e8e8;
+            transition: background 0.3s ease;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin: 2rem 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .leaderboard-section {
+                width: 95%;
+                margin: 1.5rem auto;
+                padding: 1rem;
+            }
+
+            .leaderboard-section .leaderboard-button {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
+
+            th,
+            td {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title,
+            .table-overlay-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .table-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body class="light">
+    <nav id="light-main-nav" class="light-glass">
+        <div class="light-nav-container">
+            <a href="/light" id="light-nav-brand">
+                <span class="light-logo-primary">Type</span>
+                <span class="light-logo-secondary">Master</span>
+            </a>
+            <div id="light-nav-links" class="light-nav-links">
+                <a href="/words" class="light-nav-link">Words</a>
+                <a href="/leaderboardLight" class="light-nav-link">Leaderboard</a>
+                {% if 'username' in session %}
+                <a href="/lightprofile" class="light-nav-link">Profile</a>
+                {% else %}
+                <a href="/lightlogin" class="light-nav-link">Login</a>
+                {% endif %}
             </div>
-        </nav>
-        <section class="leaderboard-section">
-            <h2 class="section-title">Leaderboard</h2>
+        </div>
+    </nav>
+    <section class="leaderboard-section">
+        <div class="leaderboard-content">
+            <div class="table-container">
+                <h2 class="table-overlay-title">Leaderboard</h2>
+            </div>
+            <div id="leaderboard-options">
+                <button onclick="location.href='/leaderboardLight?category=classes'"
+                    class="leaderboard-button {% if category == 'classes' %}active{% endif %}">Classes</button>
+                <button onclick="location.href='/leaderboardLight?category=wpm15'"
+                    class="leaderboard-button {% if category == 'wpm15' %}active{% endif %}">15 Words</button>
+                <button onclick="location.href='/leaderboardLight?category=wpm30'"
+                    class="leaderboard-button {% if category == 'wpm30' %}active{% endif %}">30 Words</button>
+                <button onclick="location.href='/leaderboardLight?category=wpm45'"
+                    class="leaderboard-button {% if category == 'wpm45' %}active{% endif %}">45 Words</button>
+                <button onclick="location.href='/leaderboardLight?category=wpm50'"
+                    class="leaderboard-button {% if category == 'wpm50' %}active{% endif %}">50 Words</button>
+                <button onclick="location.href='/leaderboardLight?category=time15'"
+                    class="leaderboard-button {% if category == 'time15' %}active{% endif %}">15s</button>
+                <button onclick="location.href='/leaderboardLight?category=time30'"
+                    class="leaderboard-button {% if category == 'time30' %}active{% endif %}">30s</button>
+                <button onclick="location.href='/leaderboardLight?category=time40'"
+                    class="leaderboard-button {% if category == 'time40' %}active{% endif %}">40s</button>
+                <button onclick="location.href='/leaderboardLight?category=time50'"
+                    class="leaderboard-button {% if category == 'time50' %}active{% endif %}">50s</button>
+            </div>
             {% if leaders %}
-            <table class="leaderboard-table">
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Username</th>
-                        <th>Lessons Completed</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for leader in leaders %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ leader[0] }}</td>
-                        <td>{{ leader[1] }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-            <p class="no-data">No data available</p>
+            <div class="table-container">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for leader in leaders %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ leader[0] }}</td>
+                            <td>{{ leader[1] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
             {% endif %}
-        </section>
-        <footer id="light-main-footer" class="light-glass">
-            <p>© 2024 TypeMaster</p>
-        </footer>
-    </body>
-    </html>
+        </div>
+    </section>
+    <footer id="light-main-footer" class="light-glass">
+        <p>© 2025 TypeMaster</p>
+    </footer>
+</body>
+
+</html>

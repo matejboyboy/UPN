@@ -12,9 +12,11 @@
     body {
       background: #151515;
     }
+
     .card {
       position: relative;
     }
+
     .card.completed::after {
       content: "★";
       color: gold;
@@ -22,7 +24,7 @@
       top: 10px;
       right: 10px;
       font-size: 1.5em;
-      pointer-events: none; /* so it doesn’t block clicks */
+      pointer-events: none;
     }
   </style>
 </head>
@@ -185,57 +187,36 @@
   </footer>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Select all elements with the class 'card' (lesson cards)
-      const cards = document.querySelectorAll(".card");
-      // Create an IntersectionObserver to monitor when cards enter the viewport
-      const obs = new IntersectionObserver((entries) => {
+      const cards = document.querySelectorAll(".card"); // Selectamo vse elemente card.
+      const obs = new IntersectionObserver((entries) => { // Gleda kdaj so cardi vidni.
         entries.forEach(e => {
           if (e.isIntersecting) {
-            // Add 'visible' class to trigger animation (e.g., fade-in)
-            e.target.classList.add("visible");
-            // Stop observing the element to optimize performance
-            obs.unobserve(e.target);
+            e.target.classList.add("visible"); // Dodamo class visible ko je card viden.
+            obs.unobserve(e.target); // Nehamo opazavotati ko je vidn.
           }
         });
-      // Set observer to trigger when 10% of the element is visible
-      }, { threshold: 0.1 });
-      // Start observing each card for visibility
-      cards.forEach(c => obs.observe(c));
+      }, { threshold: 0.1 }); // Nehamo opazovati ko vidmo vsaj 10% carda.
+      cards.forEach(c => obs.observe(c)); // Vsakemu cardu dodamo observer.
     });
-</script>
-<script>
+  </script>
+  <script>
+    // Ko se naloži stran pridobimo seznam vseh lessonov ki so že bili zaključeni.
     document.addEventListener('DOMContentLoaded', () => {
-      // Parse the JSON string from the body's data-completed-lessons attribute into an array
-      const completedLessons = JSON.parse(
-        document.body.dataset.completedLessons
-      );
-      // Iterate over all elements with the class 'card'
+      const completedLessons = JSON.parse(document.body.dataset.completedLessons);
+      // Selectamo vse carde.
       document.querySelectorAll('.card').forEach(card => {
         const link = card.querySelector('a');
         if (!link) return;
-        // Split the href attribute (e.g., 'lesson/001') into segments
-        const segments = link.getAttribute('href').split('/');
-        // Extract the last segment (lesson number) and convert to a number
-        const lessonNumber = Number(segments.pop());
-        // Check if lessonNumber is a valid integer and in completedLessons
-        if (Number.isInteger(lessonNumber)
+        const segments = link.getAttribute('href').split('/'); // Razdelimo link na dele.
+        const lessonNumber = Number(segments.pop()); // Pridobimo dell kjer je lessonNumber.
+        if (Number.isInteger(lessonNumber) // Preveimo če je lessonNumber celo število
           && completedLessons.includes(lessonNumber)
         ) {
-          // Add 'completed' class to mark the card as completed (shows gold star)
-          card.classList.add('completed');
+          card.classList.add('completed'); // Dodamo completed ko je lessonNumber v seznamu completedLessons.
         }
       });
     });
-</script>
-<script>
-    document.querySelectorAll('card').forEach(card => {
-      // Add click event listener to toggle the 'completed' class
-      card.addEventListener('click', function () {
-        // Toggle the 'completed' class on click (adds/removes gold star)
-        card.classList.toggle('completed');
-      });
-    });
-</script>
+  </script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,85 @@
   <title>Profile (Light)</title>
   <style>
     body {
-      background: var(--light-bg); /* #f5f5f5 */
-      color: var(--light-text-primary); /* #333333 */
+      background: var(--light-bg);
+      color: var(--light-text-primary);
     }
+
     #profile-card {
-      background: var(--light-form-bg); /* #ffffff */
+      background: var(--light-form-bg);
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
       width: 100%;
-      max-width: 400px;
       margin: 2rem auto;
+      color: var(--light-text-primary);
     }
-    .username, .join-date {
-      color: var(--light-text-primary); /* #333333 */
+
+    .username {
+      color: rgb(85, 85, 85);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
+
     .avatar {
-      border: 2px solid var(--light-border); /* #cccccc */
+      border: 2px solid var(--light-border);
+      cursor: pointer;
+    }
+
+    .completed-lessons {
+      color: rgb(85, 85, 85);
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    #profile-picture-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-picture-option {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    .close-button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background: #ddd;
+      color: #333;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    #profile-buttons {
+      margin-top: -0.50rem;
     }
   </style>
 </head>
+
 <body class="light">
   <header>
     <nav id="light-main-nav" class="light-glass">
@@ -39,18 +99,17 @@
           <a href="/words" class="light-nav-link">Words</a>
           <a href="/leaderboardLight" class="light-nav-link">Leaderboard</a>
           {% if 'username' in session %}
-            <a href="/lightprofile" class="light-nav-link">Profile</a>
+          <a href="/lightprofile" class="light-nav-link">Profile</a>
           {% else %}
-            <a href="/lightlogin" class="light-nav-link">Login</a>
+          <a href="/lightlogin" class="light-nav-link">Login</a>
           {% endif %}
-          <a href="/profile" class="light-nav-link">Dark</a>
         </div>
       </div>
     </nav>
   </header>
   <div id="profile-card">
     <div class="profile-header">
-      <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=80" alt="Default Profile Picture" class="avatar">
+      <img src="{{ profile_picture }}" alt="Profile Picture" class="avatar" onclick="openProfilePictureModal()">
       <div class="user-info">
         <div class="username">{{ username }}</div>
         <div class="join-date">Joined {{ join_date }}</div>
@@ -60,11 +119,79 @@
   </div>
   <div id="profile-buttons">
     <div class="form-links">
-      <a href="/light" class="light-button light-button-small">Lessons</a>
-      <a href="/words" class="light-button light-button-small">Words</a>
-      <a href="/logout" class="light-button light-button-small">Logout</a>
-      <a href="/profile" class="light-button light-button-small">Dark Theme</a>
+      <a href="/light" class="button button-small">Lessons</a>
+      <a href="/words" class="button button-small">Words</a>
+      <a href="/logoutlight" class="button button-small">Logout</a>
+      <a href="/profile" class="button button-small">Dark Theme</a>
+      <button onclick="confirmDeleteAccount()" class="button button-small">Remove Account</button>
     </div>
   </div>
+  <div id="profile-picture-modal">
+    <div class="modal-content">
+      <h3 style="color: #333;">Choose Profile Picture</h3>
+      <div style="display: flex; justify-content: center; gap: 10px;">
+        <img src="/static/Slike/PIG.png" class="profile-picture-option"
+          onclick="setProfilePicture('/static/Slike/PIG.png'); closeModal()" />
+        <img src="/static/Slike/FROG.png" class="profile-picture-option"
+          onclick="setProfilePicture('/static/Slike/FROG.png'); closeModal()" />
+        <img src="/static/Slike/TIGER.png" class="profile-picture-option"
+          onclick="setProfilePicture('/static/Slike/TIGER.png'); closeModal()" />
+        <img src="/static/Slike/BEAR.png" class="profile-picture-option"
+          onclick="setProfilePicture('/static/Slike/BEAR.png'); closeModal()" />
+      </div>
+      <button class="close-button" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+  <script>
+    function openProfilePictureModal() {
+      document.getElementById('profile-picture-modal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('profile-picture-modal').style.display = 'none';
+    }
+    function setProfilePicture(path) {
+      fetch('/set_profile_picture', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ new_picture: path })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            document.querySelector('.avatar').src = data.new_picture;
+          } else {
+            alert('Failed to update profile picture: ' + data.error);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred');
+        });
+    }
+    function confirmDeleteAccount() {
+      if (confirm("Are you sure you want to remove your account?")) {
+        fetch('/remove_account', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              window.location.href = '/logoutlight';
+            } else {
+              alert('Failed to remove account: ' + data.error);
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred');
+          });
+      }
+    }
+  </script>
+
 </body>
+
 </html>

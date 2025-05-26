@@ -12,7 +12,9 @@
       --hover-effect: #3a3a3c;
       --text-primary: #ffffff;
       --accent: #5b5bff;
+      --highlight: #ffd740;
     }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -24,142 +26,88 @@
       font-family: 'Courier New', monospace;
       color: #e0e0e0;
     }
+
     #main-content {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: calc(100vh - 60px);
+      min-height: calc(100vh - 60px);
+      overflow-y: auto;
+      padding: 2rem 1rem;
     }
-    #options {
+
+    .button-bar {
       display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
       justify-content: center;
-      gap: 1rem;
       background: var(--form-bg);
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      max-width: 400px;
-      margin: 1rem auto;
+      height: 40px;
+      padding: 0 1rem;
+      border-radius: 5px;
+      margin: 0 auto 1.5rem auto;
+      gap: 0.75rem;
     }
-    #options button {
+
+    .button-bar span {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0;
+      background: none;
+    }
+
+    .button-bar button.toggle {
       background: transparent;
-      color: var(--text-secondary);
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      font-size: 1rem;
       border: none;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      font-weight: normal;
+      transform: none !important;
+      box-shadow: none !important;
     }
-    #options button:hover {
-      background: var(--hover-effect);
+
+    .button-bar button.toggle:hover {
       color: var(--text-primary);
+      font-weight: bold;
+      background: transparent !important;
+      box-shadow: none !important;
+      transform: none !important;
     }
-    #options button.activeButton {
-      background: var(--accent);
-      color: white;
-    }
-    #reset {
-      margin: 1rem auto;
-      display: block;
-    }
-    span {
+
+    .button-bar .toggle.activeButton {
+      color: rgb(103, 103, 255);
       font-weight: bold;
     }
-    #main {
-      position: relative;
-      width: 80%;
-      max-width: 600px;
-      padding: 2rem;
-      background: #1f1f23;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-    #word {
-      font-size: 2rem;
-      line-height: 1.4;
+
+    .button-bar .divider {
       color: #555;
-      white-space: pre-wrap;
-      word-break: break-word;
-      user-select: none;
+      margin: 0 0.5rem;
+      height: 20px;
+      align-self: center;
     }
-    .green_letter {
-      color: #a9ff68;
-    }
-    .red_letter {
-      color: #ff5c57;
-    }
-    .inputField {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      padding: 2rem;
-      box-sizing: border-box;
-      font-size: 2rem;
-      line-height: 1.4;
-      font-family: 'Courier New', monospace;
-      border: none;
-      background: transparent;
-      color: transparent;
-      caret-color: transparent;
-      outline: none;
-      white-space: pre-wrap;
-      word-break: break-word;
-      resize: none;
-      z-index: 1;
-      opacity: 0;
-    }
-    #timer,
-    #timer2,
-    #start,
-    #end {
-      margin-top: 1rem;
-      text-align: center;
-      color: #ccc;
-    }
-    .end {
-      color: #a9ff68;
-      font-size: 1.5rem;
-      text-align: center;
-    }
-    .restart {
-      margin: 1rem auto 0;
-      display: block;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 4px;
-      background: #5b5bff;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .restart:hover {
-      background: #4a4ae0;
-    }
-    button:hover {
-      cursor: pointer;
-    }
-    button {
-      font-size: 20px;
-      border: none;
-      background: transparent;
-      color: inherit;
-    }
-    .activeButton {
-      color: rgb(103, 103, 255);
-    }
+
     #word span {
       position: relative;
     }
+
     .hide {
       display: none;
     }
+
     #main.focus {
       position: relative;
       backdrop-filter: blur(50px);
@@ -169,6 +117,7 @@
       border-radius: 8px;
       overflow: hidden;
     }
+
     #main.focus::after {
       content: "Click to start typing!";
       position: absolute;
@@ -182,20 +131,22 @@
       text-align: center;
       opacity: 1;
     }
+
     #main.focus:hover {
       cursor: pointer;
     }
+
     #main.focus * {
       cursor: pointer !important;
       user-select: none;
     }
+
     .reveal {
       position: absolute;
       top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 80%;
-      max-width: 600px;
       padding: 1.5rem;
       background: rgba(255, 255, 255, 0.05);
       border-radius: 8px;
@@ -203,36 +154,39 @@
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       color: #e0e0e0;
     }
+
     .results-row {
       width: 100%;
       text-align: start;
       margin-bottom: 1rem;
     }
+
     .text {
       font-size: 2rem;
       color: #e0e0e0;
       font-weight: bold;
     }
+
     .numbers {
       font-size: 2rem;
       color: rgb(103, 103, 255);
       font-weight: bold;
       margin-left: 0.5rem;
     }
+
     .missed_space {
       background-color: #ff5c57;
     }
+
     @keyframes blink {
-      0%, 100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
+
     #word span.cursor {
       position: relative;
     }
+
     #word span.cursor::before {
       content: "";
       position: absolute;
@@ -246,9 +200,11 @@
       animation-iteration-count: infinite;
       animation-timing-function: steps(1, end);
     }
-    #options.hide {
+
+    #options.hide, #options1.hide, #options2.hide {
       display: none;
     }
+
     #CapsLockWarning {
       margin-bottom: 1rem;
       background-color: var(--accent);
@@ -260,6 +216,34 @@
       text-align: center;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
+
+    #main {
+      margin: 5% !important;
+    }
+
+    #word-container {
+      height: 5.6em;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border-radius: 6px;
+      box-shadow: none;
+    }
+
+    #word {
+      white-space: normal;
+      line-height: 1.5em;
+      word-wrap: break-word;
+    }
+
+    #countdown_timer{
+      font-weight: bold;
+      color: rgb(103, 103, 255);
+    }
+
+
   </style>
 </head>
 <body class="lesson">
@@ -270,7 +254,7 @@
         <span class="dark-logo-secondary">Master</span>
       </a>
       <div id="dark-nav-links" class="dark-nav-links">
-        <a href="/words" class="dark-nav-link">Lessons</a>
+        <a href="/" class="dark-nav-link">Lessons</a>
         <a href="/leaderboard" class="dark-nav-link">Leaderboard</a>
         {% if 'username' in session %}
         <a href="/profile" class="dark-nav-link">Profile</a>
@@ -283,15 +267,28 @@
   <div id="main-content">
     <div id="container-words" class="hide"></div>
     <div id="start"></div>
-    <div id="options">
-      <button id="word_15" name="buttons" class="activeButton">15</button>
-      <button id="word_30" name="buttons">30</button>
-      <button id="word_45" name="buttons">45</button>
-      <button id="word_50" name="buttons">50</button>
+    <div class="button-bar" id="button-bar">
+      <span id="options1">
+        <button id="word_15" name="buttons" class="toggle activeButton">15</button>
+        <button id="word_30" name="buttons" class="toggle">30</button>
+        <button id="word_45" name="buttons" class="toggle">45</button>
+        <button id="word_50" name="buttons" class="toggle">50</button>
+      </span>
+      <span class="divider">|</span>
+      <span id="options2">
+        <button id="time_15" name="buttons_time" class="toggle">15</button>
+        <button id="time_30" name="buttons_time" class="toggle">30</button>
+        <button id="time_40" name="buttons_time" class="toggle">40</button>
+        <button id="time_50" name="buttons_time" class="toggle">50</button>
+      </span>
     </div>
     <div id="CapsLockWarning" class="hide"></div>
+    
     <div id="main">
-      <div id="word"></div>
+      <span id="countdown_timer" class="hide"></span>
+      <div id="word-container">
+        <div id="word"></div>
+      </div>
       <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
     </div>
     <div id="results" class="hide">
@@ -308,21 +305,16 @@
         <span id="result_numbers_time" class="numbers"></span>
       </div>
     </div>
+    <div id="timer"></div>
     <div id="end" class="hide"></div>
     <button id="reset" onclick="reset()" class="restart">Restart</button>
   </div>
   <script>
-    let buttons = document.getElementsByName('buttons');
     let input_field = document.getElementById('input');
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener('click', function () {
-        for (let j = 0; j < buttons.length; j++) {
-          buttons[j].classList.remove('activeButton');
-        }
-        buttons[i].classList.add('activeButton');
-      });
-    }
+
     window.onload = function () {
+      window.selected_word_count = 15;
+      window.usingCountdown = false;
       fetch('/api?amount=15')
         .then(response => response.text())
         .then(data => {
@@ -333,7 +325,10 @@
           input_field.focus();
         })
     };
+
     document.getElementById('word_15').addEventListener('click', function () {
+      window.selected_word_count = 15;
+      window.usingCountdown = false;
       fetch('/api?amount=15')
         .then(response => response.text())
         .then(data => {
@@ -344,7 +339,10 @@
           input_field.focus();
         })
     });
+
     document.getElementById('word_30').addEventListener('click', function () {
+      window.selected_word_count = 30;
+      window.usingCountdown = false;
       fetch('/api?amount=30')
         .then(response => response.text())
         .then(data => {
@@ -355,7 +353,10 @@
           input_field.focus();
         })
     });
+
     document.getElementById('word_45').addEventListener('click', function () {
+      window.selected_word_count = 45;
+      window.usingCountdown = false;
       fetch('/api?amount=45')
         .then(response => response.text())
         .then(data => {
@@ -366,7 +367,10 @@
           input_field.focus();
         })
     });
+
     document.getElementById('word_50').addEventListener('click', function () {
+      window.selected_word_count = 50;
+      window.usingCountdown = false;
       fetch('/api?amount=50')
         .then(response => response.text())
         .then(data => {
@@ -377,17 +381,64 @@
           input_field.focus();
         })
     });
-    // Hide options buttons when results are shown
-    const resultsDiv = document.getElementById('results');
-    const optionsDiv = document.getElementById('options');
-    const observer = new MutationObserver(() => {
-      if (!resultsDiv.classList.contains('hide')) {
-        optionsDiv.classList.add('hide');
-      } else {
-        optionsDiv.classList.remove('hide');
-      }
+
+    document.getElementById('time_15').addEventListener('click', function () {
+      window.selected_time = 15;
+      window.usingCountdown = true;
+      fetch('/api?amount=999')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('container-words').innerText = data.trim();
+          if (typeof i_am_desperate_for_this_to_work === 'function') {
+            i_am_desperate_for_this_to_work();
+          }
+          input_field.focus();
+        })
     });
-    observer.observe(resultsDiv, { attributes: true, attributeFilter: ['class'] });
+
+    document.getElementById('time_30').addEventListener('click', function () {
+      window.selected_time = 30;
+      window.usingCountdown = true;
+      fetch('/api?amount=999')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('container-words').innerText = data.trim();
+          if (typeof i_am_desperate_for_this_to_work === 'function') {
+            i_am_desperate_for_this_to_work();
+          }
+          input_field.focus();
+        })
+    });
+
+    document.getElementById('time_40').addEventListener('click', function () {
+      window.selected_time = 40;
+      window.usingCountdown = true;
+      fetch('/api?amount=999')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('container-words').innerText = data.trim();
+          if (typeof i_am_desperate_for_this_to_work === 'function') {
+            i_am_desperate_for_this_to_work();
+          }
+          input_field.focus();
+        })
+    });
+
+    document.getElementById('time_50').addEventListener('click', function () {
+      window.selected_time = 50;
+      window.usingCountdown = true;
+      fetch('/api?amount=999')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('container-words').innerText = data.trim();
+          if (typeof i_am_desperate_for_this_to_work === 'function') {
+            i_am_desperate_for_this_to_work();
+          }
+          input_field.focus();
+        })
+    });
+
+
   </script>
   <script src="../static/js/typing_logic.js"></script>
   <script src="../static/js/typing_animation.js"></script>

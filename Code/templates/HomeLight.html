@@ -8,6 +8,15 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="/static/css/style.css">
   <title>Lessons (Light)</title>
+  <style>
+    .card.completed::after {
+      content: "★";
+      color: gold;
+      margin-left: 0.5rem;
+      font-size: 1.2rem;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 
 <body class="light" data-completed-lessons="{{ completed_lessons | tojson }}">
@@ -174,24 +183,14 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const completedLessons = JSON.parse(document.body.dataset.completedLessons);
-      console.log('Completed lessons:', completedLessons);
       document.querySelectorAll('.light-card').forEach(card => {
         const link = card.querySelector('a');
         if (!link) return;
         const segments = link.getAttribute('href').split('/');
         const lessonNumber = Number(segments.pop());
-        console.log('Lesson number:', lessonNumber);
         if (Number.isInteger(lessonNumber) && completedLessons.includes(lessonNumber)) {
           card.classList.add('completed');
-          console.log('Added completed class to card for lesson', lessonNumber);
         }
-      });
-    });
-  </script>
-  <script>
-    document.querySelectorAll('.light-card').forEach(card => {
-      card.addEventListener('click', function () {
-        card.classList.toggle('completed');
       });
     });
   </script>

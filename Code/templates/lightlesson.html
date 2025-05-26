@@ -2,202 +2,218 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/style.css">
-  <title>Light Lesson {{ lesson_number }}</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: var(--light-bg);
-      font-family: 'Roboto', sans-serif;
-      color: var(--light-text-primary);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Light Lesson {{ lesson_number }}</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--light-bg);
+            font-family: 'Roboto', sans-serif;
+            color: var(--light-text-primary);
+        }
 
-    #main {
-      position: relative;
-      width: 90%;
-      max-width: 700px;
-      padding: 2.5rem;
-      background: var(--form-bg);
-      border-radius: 12px;
-      margin: 2rem 0;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        #main {
+            position: relative;
+            width: 90%;
+            max-width: 700px;
+            padding: 2.5rem;
+            background: var(--light-form-bg);
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    #main:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-    }
+        #main:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
 
-    #word {
-      font-size: 2.2rem;
-      line-height: 1.5;
-      color: var(--text-secondary);
-      white-space: pre-wrap;
-      word-break: break-word;
-      user-select: none;
-      font-family: 'Courier New', monospace;
-    }
+        #word {
+            font-size: 2.2rem;
+            line-height: 1.5;
+            color: var(--light-text-secondary);
+            white-space: pre-wrap;
+            word-break: break-word;
+            user-select: none;
+            font-family: 'Courier New', monospace;
+        }
 
-    .green_letter {
-      color: #a9ff68;
-    }
+        .green_letter {
+            color: #28a745;
+        }
 
-    .red_letter {
-      color: #ff5c57;
-    }
+        .red_letter {
+            color: #dc3545;
+        }
 
-    .inputField {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      padding: 2.5rem;
-      box-sizing: border-box;
-      font-size: 2.2rem;
-      line-height: 1.5;
-      font-family: 'Courier New', monospace;
-      border: none;
-      background: transparent;
-      color: transparent;
-      caret-color: transparent;
-      outline: none;
-      white-space: pre-wrap;
-      word-break: break-word;
-      resize: none;
-      z-index: 1;
-      opacity: 0;
-    }
+        .inputField {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 2.5rem;
+            box-sizing: border-box;
+            font-size: 2.2rem;
+            line-height: 1.5;
+            font-family: 'Courier New', monospace;
+            border: none;
+            background: transparent;
+            color: transparent;
+            caret-color: transparent;
+            outline: none;
+            white-space: pre-wrap;
+            word-break: break-word;
+            resize: none;
+            z-index: 1;
+            opacity: 0;
+        }
 
-    .inputField:focus {
-      color: white;
-    }
+        .inputField:focus {
+            color: black;
+        }
 
-    #text {
-      display: none;
-    }
+        #text {
+            display: none;
+        }
 
-    #timer,
-    #timer2,
-    #start,
-    #end {
-      margin-top: 1.5rem;
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-    }
+        #timer,
+        #timer2,
+        #start,
+        #end {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: var(--light-text-secondary);
+            font-size: 1.1rem;
+        }
 
-    .end {
-      color: #a9ff68;
-      font-size: 1.8rem;
-      text-align: center;
-      font-weight: 600;
-    }
+        .end {
+            color: #28a745;
+            font-size: 1.8rem;
+            text-align: center;
+            font-weight: 600;
+        }
 
-    #nav-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
+        #nav-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
 
-    .light-button-small {
-      padding: 0.75rem 1.5rem;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 6px;
-      transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    }
+        .light-button-small {
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    .light-button-small:hover {
-      background: var(--accent-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
-    }
+        .light-button-small:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+        }
 
-    #wpm,
-    #accuracy_stats {
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--text-primary);
-    }
-  </style>
+        #wpm,
+        #accuracy_stats {
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--light-text-primary);
+        }
+
+        #light-main-nav {
+            width: 100vw;
+            left: 0;
+            font-family: 'Roboto', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            width: 100%;
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body class="light lesson">
-  <header>
-    <nav id="light-main-nav" class="light-glass">
-      <div class="light-nav-container">
-        <a href="/light" id="light-nav-brand">
-          <span class="light-logo-primary">Type</span>
-          <span class="light-logo-secondary">Master</span>
-        </a>
-        <div id="light-nav-links" class="light-nav-links">
-          <a href="/words" class="light-nav-link">Words</a>
-          {% if 'username' in session %}
-          <a href="/lightprofile" class="light-nav-link">Profile</a>
-          {% else %}
-          <a href="/lightlogin" class="light-nav-link">Login</a>
-          {% endif %}
-        </div>
-      </div>
-    </nav>
-  </header>
+    <header>
+        <nav id="light-main-nav" class="light-glass">
+            <div class="light-nav-container">
+                <a href="/light" id="light-nav-brand">
+                    <span class="light-logo-primary">Type</span>
+                    <span class="light-logo-secondary">Master</span>
+                </a>
+                <div id="light-nav-links" class="light-nav-links">
+                    <a href="/words" class="light-nav-link">Words</a>
+                    <a href="/leaderboardLight" class="light-nav-link">Leaderboard</a>
+                    {% if 'username' in session %}
+                    <a href="/lightprofile" class="light-nav-link">Profile</a>
+                    {% else %}
+                    <a href="/lightlogin" class="light-nav-link">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
 
-  <div id="text">{{ text_content }}</div>
-  <div id="start"></div>
+    <div id="text">{{ text_content }}</div>
+    <div id="start"></div>
 
-  <div id="nav-buttons">
-    {% if lesson_number > 1 %}
-    <a href="{{ url_for('display_lightlesson', lesson_number=lesson_number - 1) }}" class="button-small">Previous Lesson</a>
-    {% endif %}
-    <a href="{{ url_for('display_lightlesson', lesson_number=lesson_number + 1) }}" class="button-small">Next Lesson</a>
-  </div>
+    <div id="nav-buttons">
+        {% if lesson_number > 1 %}
+        <a href="{{ url_for('display_lightlesson', lesson_number=lesson_number - 1) }}"
+            class="light-button-small">Previous Lesson</a>
+        {% endif %}
+        <a href="{{ url_for('display_lightlesson', lesson_number=lesson_number + 1) }}" class="light-button-small">Next
+            Lesson</a>
+    </div>
 
-  <div id="main">
-    <div id="word"></div>
-    <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
-  </div>
+    <div id="main">
+        <div id="word"></div>
+        <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off"
+            spellcheck="false" autofocus>
+    </div>
 
-  <div id="wpm"></div>
-  <div id="accuracy_stats"></div>
-  <div id="timer2"></div>
-  <div id="end"></div>
+    <div id="wpm"></div>
+    <div id="accuracy_stats"></div>
+    <div id="timer2"></div>
+    <div id="end"></div>
 
-  <script src="../static/js/typing_logic.js"></script>
-  <script src="../static/js/lessons.js"></script>
-  <script>
-     const lessonNumber = "{{ lesson_number }}";
-    function onLessonComplete() {
-        fetch(`/complete_lesson/${lessonNumber}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log('Lesson completed');
-            } else {
-                console.error('Error completing lesson');
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-    // Call onLessonComplete() in your existing logic where lesson completion is detected
-</script>
+    <script src="../static/js/typing_logic.js"></script>
+    <script src="../static/js/lessons.js"></script>
+    <script>
+        const lessonNumber = "{{ lesson_number }}";
+        function onLessonComplete() {
+            fetch(`/complete_lesson/${lessonNumber}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Lesson completed');
+                    } else {
+                        console.error('Error completing lesson');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
 </body>
 
 </html>
