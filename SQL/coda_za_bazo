@@ -1,4 +1,6 @@
-CREATE DATABASE IF NOT EXISTS flask_users
+DROP DATABASE IF EXISTS flask_users;
+
+CREATE DATABASE flask_users
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_general_ci;
 
