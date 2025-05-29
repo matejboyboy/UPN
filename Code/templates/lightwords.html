@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Typing Practice</title>
+  <title>Typing Practice - Light</title>
   <link rel="stylesheet" href="../static/css/style.css">
   <style>
     :root {
-      --form-bg: #2a2a2e;
-      --text-secondary: #a1a1aa;
-      --hover-effect: #3a3a3c;
-      --text-primary: #ffffff;
+      --form-bg: var(--light-form-bg);
+      --text-secondary: var(--light-text-secondary);
+      --hover-effect: #e0e0e0;
+      --text-primary: var(--light-text-primary);
       --accent: #5b5bff;
       --highlight: #ffd740;
     }
@@ -22,11 +22,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      background: #16161a;
+      background: white;
       font-family: 'Courier New', monospace;
-      color: #e0e0e0;
+      color: var(--light-text-primary);
     }
-    
 
     #main-content {
       width: 100%;
@@ -37,6 +36,7 @@
       min-height: calc(100vh - 60px);
       overflow-y: auto;
       padding: 2rem 1rem;
+      background-color: white;
     }
 
     .button-bar {
@@ -50,6 +50,7 @@
       border-radius: 5px;
       margin: 0 auto 1.5rem auto;
       gap: 0.75rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .button-bar span {
@@ -77,25 +78,20 @@
       justify-content: center;
       margin: 0;
       font-weight: normal;
-      transform: none !important;
-      box-shadow: none !important;
     }
 
     .button-bar button.toggle:hover {
       color: var(--text-primary);
       font-weight: bold;
-      background: transparent !important;
-      box-shadow: none !important;
-      transform: none !important;
     }
 
     .button-bar .toggle.activeButton {
-      color: rgb(103, 103, 255);
+      color: var(--accent);
       font-weight: bold;
     }
 
     .button-bar .divider {
-      color: #555;
+      color: #999;
       margin: 0 0.5rem;
       height: 20px;
       align-self: center;
@@ -109,118 +105,15 @@
       display: none;
     }
 
-    #main.focus {
-      position: relative;
-      backdrop-filter: blur(50px);
-      -webkit-backdrop-filter: blur(30px);
-      background-color: rgba(255, 255, 255, 0.2);
-      transition: background 0.5s ease;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    #main.focus::after {
-      content: "Click to start typing!";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff;
-      font-size: 1.5rem;
-      font-weight: bold;
-      pointer-events: none;
-      text-align: center;
-      opacity: 1;
-    }
-
-    #main.focus:hover {
-      cursor: pointer;
-    }
-
-    #main.focus * {
-      cursor: pointer !important;
-      user-select: none;
-    }
-
-    .reveal {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      color: #e0e0e0;
-    }
-
-    .results-row {
-      width: 100%;
-      text-align: start;
-      margin-bottom: 1rem;
-    }
-
-    .text {
-      font-size: 2rem;
-      color: #e0e0e0;
-      font-weight: bold;
-    }
-
-    .numbers {
-      font-size: 2rem;
-      color: rgb(103, 103, 255);
-      font-weight: bold;
-      margin-left: 0.5rem;
-    }
-
-    .missed_space {
-      background-color: #ff5c57;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    #word span.cursor {
-      position: relative;
-    }
-
-    #word span.cursor::before {
-      content: "";
-      position: absolute;
-      width: 2px;
-      background-color: rgb(103, 103, 255);
-      height: 1em;
-      top: 0.2em;
-      left: -2px;
-      animation-name: blink;
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
-      animation-timing-function: steps(1, end);
-    }
-
-    #options.hide, #options1.hide, #options2.hide {
-      display: none;
-    }
-
-    #CapsLockWarning {
-      margin-bottom: 1rem;
-      background-color: var(--accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
     #main {
+      position: relative;
       margin: 5% !important;
-      background-color: transparent !important;
+      width: 90%;
+      max-width: 700px;
+      padding: 2.5rem;
+      background: white;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     #word-container {
@@ -238,33 +131,159 @@
       white-space: normal;
       line-height: 1.5em;
       word-wrap: break-word;
-      color: #ffffff !important;
+      font-size: 2.2rem;
+      color: black;
+      user-select: none;
     }
 
-    #countdown_timer{
+    .green_letter {
+      color: #28a745;
+    }
+
+    .red_letter {
+      color: #dc3545;
+    }
+
+    .missed_space {
+      background-color: #ff5c57;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    #word span.cursor::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      background-color: var(--accent);
+      height: 1em;
+      top: 0.2em;
+      left: -2px;
+      animation-name: blink;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-timing-function: steps(1, end);
+    }
+
+    #CapsLockWarning {
+      margin-bottom: 1rem;
+      background-color: var(--accent);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 1.2rem;
       font-weight: bold;
-      color: rgb(103, 103, 255);
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    #countdown_timer {
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    #results {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .text {
+      font-size: 2rem;
+      color: var(--text-primary);
+      font-weight: bold;
+    }
+
+    .numbers {
+      font-size: 2rem;
+      color: var(--accent);
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+
+    #timer, #end {
+      margin-top: 1.5rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    #reset {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #reset:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 2.5rem;
+      box-sizing: border-box;
+      font-size: 2.2rem;
+      line-height: 1.5;
+      font-family: 'Courier New', monospace;
+      border: none;
+      background: transparent;
+      color: transparent;
+      caret-color: rgb(255, 255, 255);
+      outline: none;
+      white-space: pre-wrap;
+      word-break: break-word;
+      resize: none;
+      z-index: 1;
+    }
+
+    header {
+      width: 100%;
+      margin: 0;
+    }
+
+    #light-main-nav {
+      width: 100vw;
+      left: 0;
+      font-family: 'Roboto', sans-serif;
+      padding: 0;
+      margin: 0;
     }
   </style>
 </head>
-<body class="lesson">
-  <nav id="dark-main-nav" class="dark-glass">
-    <div class="dark-nav-container">
-      <a href="/" id="dark-nav-brand">
-        <span class="dark-logo-primary">Type</span>
-        <span class="dark-logo-secondary">Master</span>
-      </a>
-      <div id="dark-nav-links" class="dark-nav-links">
-        <a href="/gamemode" class="dark-nav-link">Gamemode</a>
-        <a href="/leaderboard" class="dark-nav-link">Leaderboard</a>
-        {% if 'username' in session %}
-        <a href="/profile" class="dark-nav-link">Profile</a>
-        {% else %}
-        <a href="/login" class="dark-nav-link">Login</a>
-        {% endif %}
+<body class="light lesson">
+  <header>
+    <nav id="light-main-nav" class="light-glass">
+      <div class="light-nav-container">
+        <a href="/light" id="light-nav-brand">
+          <span class="light-logo-primary">Type</span>
+          <span class="light-logo-secondary">Master</span>
+        </a>
+        <div id="light-nav-links" class="light-nav-links">
+          <a href="/gamemodelight" class="light-nav-link">Gamemode</a>
+          <a href="/leaderboardLight" class="light-nav-link">Leaderboard</a>
+          {% if 'username' in session %}
+          <a href="/lightprofile" class="light-nav-link">Profile</a>
+          {% else %}
+          <a href="/lightlogin" class="light-nav-link">Login</a>
+          {% endif %}
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
   <div id="main-content">
     <div id="container-words" class="hide"></div>
     <div id="start"></div>
@@ -297,7 +316,7 @@
       <div id="word-container">
         <div id="word"></div>
       </div>
-      <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
+      <input id="input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
     </div>
     <div id="results" class="hide">
       <div id="wpm" class="hide">
@@ -323,20 +342,10 @@
     window.onload = function () {
       window.selected_word_count = 15;
       window.usingCountdown = false;
-      if (window.interval1) {
-        clearInterval(window.interval1);
-        window.interval1 = null;
-      }
-      window.countdownStartTime = 0;
-      document.getElementById("countdown_timer").innerHTML = "";
-      document.getElementById("countdown_timer").classList.add("hide");
-
       fetch('/api?amount=15')
         .then(response => response.text())
         .then(data => {
           document.getElementById('container-words').innerText = data.trim();
-          input_field.value = "";
-          document.getElementById("word").innerHTML = "";
           if (typeof i_am_desperate_for_this_to_work === 'function') {
             i_am_desperate_for_this_to_work();
           }
@@ -347,20 +356,10 @@
     document.getElementById('word_15').addEventListener('click', function () {
       window.selected_word_count = 15;
       window.usingCountdown = false;
-            if (window.interval1) {
-        clearInterval(window.interval1);
-        window.interval1 = null;
-      }
-      window.countdownStartTime = 0;
-      document.getElementById("countdown_timer").innerHTML = "";
-      document.getElementById("countdown_timer").classList.add("hide");
-
       fetch('/api?amount=15')
         .then(response => response.text())
         .then(data => {
           document.getElementById('container-words').innerText = data.trim();
-          input_field.value = "";
-          document.getElementById("word").innerHTML = "";
           if (typeof i_am_desperate_for_this_to_work === 'function') {
             i_am_desperate_for_this_to_work();
           }
@@ -371,20 +370,10 @@
     document.getElementById('word_30').addEventListener('click', function () {
       window.selected_word_count = 30;
       window.usingCountdown = false;
-      if (window.interval1) {
-        clearInterval(window.interval1);
-        window.interval1 = null;
-      }
-      window.countdownStartTime = 0;
-      document.getElementById("countdown_timer").innerHTML = "";
-      document.getElementById("countdown_timer").classList.add("hide");
-      
       fetch('/api?amount=30')
         .then(response => response.text())
         .then(data => {
           document.getElementById('container-words').innerText = data.trim();
-          input_field.value = "";
-          document.getElementById("word").innerHTML = "";
           if (typeof i_am_desperate_for_this_to_work === 'function') {
             i_am_desperate_for_this_to_work();
           }
@@ -395,21 +384,10 @@
     document.getElementById('word_45').addEventListener('click', function () {
       window.selected_word_count = 45;
       window.usingCountdown = false;
-      if (window.interval1) {
-        clearInterval(window.interval1);
-        window.interval1 = null;
-      }
-      window.countdownStartTime = 0;
-      document.getElementById("countdown_timer").innerHTML = "";
-      document.getElementById("countdown_timer").classList.add("hide");
-
       fetch('/api?amount=45')
         .then(response => response.text())
         .then(data => {
           document.getElementById('container-words').innerText = data.trim();
-          input_field.value = "";
-          document.getElementById("word").innerHTML = "";
-
           if (typeof i_am_desperate_for_this_to_work === 'function') {
             i_am_desperate_for_this_to_work();
           }
@@ -420,26 +398,10 @@
     document.getElementById('word_50').addEventListener('click', function () {
       window.selected_word_count = 50;
       window.usingCountdown = false;
-      if (window.interval1) {
-        clearInterval(window.interval1);
-        window.interval1 = null;
-      }
-      window.countdownStartTime = 0;
-      document.getElementById("countdown_timer").innerHTML = "";
-      document.getElementById("countdown_timer").classList.add("hide");
-            if (window.interval1) {
-        clearInterval(window.interval1);
-        window.interval1 = null;
-      }
-      window.countdownStartTime = 0;
-      document.getElementById("countdown_timer").innerHTML = "";
-      document.getElementById("countdown_timer").classList.add("hide");
       fetch('/api?amount=50')
         .then(response => response.text())
         .then(data => {
           document.getElementById('container-words').innerText = data.trim();
-          input_field.value = "";
-          document.getElementById("word").innerHTML = "";
           if (typeof i_am_desperate_for_this_to_work === 'function') {
             i_am_desperate_for_this_to_work();
           }
@@ -450,20 +412,10 @@
     document.getElementById('time_15').addEventListener('click', function () {
       window.selected_time = 15;
       window.usingCountdown = true;
-      if (window.interval1) {
-        clearInterval(window.interval1);
-        window.interval1 = null;
-      }
-      window.countdownStartTime = 0;
-      document.getElementById("countdown_timer").innerHTML = "";
-      document.getElementById("countdown_timer").classList.add("hide");
-
       fetch('/api?amount=999')
         .then(response => response.text())
         .then(data => {
           document.getElementById('container-words').innerText = data.trim();
-          input_field.value = "";
-          document.getElementById("word").innerHTML = "";
           if (typeof i_am_desperate_for_this_to_work === 'function') {
             i_am_desperate_for_this_to_work();
           }
@@ -474,20 +426,10 @@
     document.getElementById('time_30').addEventListener('click', function () {
       window.selected_time = 30;
       window.usingCountdown = true;
-      if (window.interval1) {
-        clearInterval(window.interval1);
-        window.interval1 = null;
-      }
-      window.countdownStartTime = 0;
-      document.getElementById("countdown_timer").innerHTML = "";
-      document.getElementById("countdown_timer").classList.add("hide");
-
       fetch('/api?amount=999')
         .then(response => response.text())
         .then(data => {
-          document.getElementById('container-words').innerText = data.trim();         
-          input_field.value = "";
-          document.getElementById("word").innerHTML = "";
+          document.getElementById('container-words').innerText = data.trim();
           if (typeof i_am_desperate_for_this_to_work === 'function') {
             i_am_desperate_for_this_to_work();
           }
@@ -498,20 +440,10 @@
     document.getElementById('time_40').addEventListener('click', function () {
       window.selected_time = 40;
       window.usingCountdown = true;
-      if (window.interval1) {
-        clearInterval(window.interval1);
-        window.interval1 = null;
-      }
-      window.countdownStartTime = 0;
-      document.getElementById("countdown_timer").innerHTML = "";
-      document.getElementById("countdown_timer").classList.add("hide");
-
       fetch('/api?amount=999')
         .then(response => response.text())
         .then(data => {
-          document.getElementById('container-words').innerText = data.trim();          
-          input_field.value = "";
-          document.getElementById("word").innerHTML = "";
+          document.getElementById('container-words').innerText = data.trim();
           if (typeof i_am_desperate_for_this_to_work === 'function') {
             i_am_desperate_for_this_to_work();
           }
@@ -522,27 +454,16 @@
     document.getElementById('time_50').addEventListener('click', function () {
       window.selected_time = 50;
       window.usingCountdown = true;
-      if (window.interval1) {
-        clearInterval(window.interval1);
-        window.interval1 = null;
-      }
-      window.countdownStartTime = 0;
-      document.getElementById("countdown_timer").innerHTML = "";
-      document.getElementById("countdown_timer").classList.add("hide");
-
       fetch('/api?amount=999')
         .then(response => response.text())
         .then(data => {
-          document.getElementById('container-words').innerText = data.trim();          
-          input_field.value = "";
-          document.getElementById("word").innerHTML = "";
+          document.getElementById('container-words').innerText = data.trim();
           if (typeof i_am_desperate_for_this_to_work === 'function') {
             i_am_desperate_for_this_to_work();
           }
           input_field.focus();
         })
     });
-
     const inputField = document.getElementById('input');
     const wordElement = document.getElementById('word');
     const fontButtons = document.getElementsByName('font_buttons');

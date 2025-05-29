@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../static/css/style.css">
     <style>
     :root {
-      --form-bg: #2a2a2e;
+      --form-bg: #ffffff;
       --text-secondary: #a1a1aa;
       --hover-effect: #3a3a3c;
       --text-primary: #ffffff;
@@ -23,7 +23,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      background: #16161a;
+      background: #ffffff;
       font-family: 'Courier New', monospace;
       color: #e0e0e0;
     }
@@ -44,8 +44,9 @@
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
+      color: #e6e6e6 !important;
       justify-content: center;
-      background: var(--form-bg);
+      background: rgb(231, 230, 230);
       height: 40px;
       padding: 0 1rem;
       border-radius: 5px;
@@ -66,7 +67,7 @@
     .button-bar button.toggle {
       background: transparent;
       border: none;
-      color: var(--text-secondary);
+      color: rgb(0, 0, 0);
       font-size: 0.95rem;
       padding: 0.2rem 0.8rem;
       border-radius: 999px;
@@ -83,7 +84,7 @@
     }
 
     .button-bar button.toggle:hover {
-      color: var(--text-primary);
+      color: black;
       font-weight: bold;
       background: transparent !important;
       box-shadow: none !important;
@@ -96,7 +97,7 @@
     }
 
     .button-bar .divider {
-      color: #555;
+      color: #ffffff;
       margin: 0 0.5rem;
       height: 20px;
       align-self: center;
@@ -239,34 +240,35 @@
       white-space: normal;
       line-height: 1.5em;
       word-wrap: break-word;
-      color: #ffffff !important;
+      color: #000000 !important;
     }
 
     #countdown_timer{
       font-weight: bold;
       color: rgb(103, 103, 255);
     }
+    
     </style>
 </head>
 
-<body class="lesson">
-    <nav id="dark-main-nav" class="dark-glass">
-        <div class="dark-nav-container">
-            <a href="/" id="dark-nav-brand">
-                <span class="dark-logo-primary">Type</span>
-                <span class="dark-logo-secondary">Master</span>
-            </a>
-            <div id="dark-nav-links" class="dark-nav-links">
-                <a href="/words" class="dark-nav-link">Words</a>
-                <a href="/leaderboard" class="dark-nav-link">Leaderboard</a>
-                {% if 'username' in session %}
-                <a href="/profile" class="dark-nav-link">Profile</a>
-                {% else %}
-                <a href="/login" class="dark-nav-link">Login</a>
-                {% endif %}
-            </div>
-        </div>
-    </nav>
+<body class="light lesson">
+    <nav id="light-main-nav" class="light-glass">
+    <div class="light-nav-container">
+      <a href="/light" id="light-nav-brand">
+        <span class="light-logo-primary">Type</span>
+        <span class="light-logo-secondary">Master</span>
+      </a>
+      <div id="light-nav-links" class="light-nav-links">
+        <a href="/lightwords" class="light-nav-link">Words</a>
+        <a href="/leaderboardLight" class="light-nav-link">Leaderboard</a>
+        {% if 'username' in session %}
+        <a href="/lightprofile" class="light-nav-link">Profile</a>
+        {% else %}
+        <a href="/lightlogin" class="light-nav-link">Login</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
     <div id="main-content">
         <div id="container-words" class="hide"></div>
         <div class="button-bar" id="button-bar">
@@ -304,68 +306,62 @@
         <button id="reset" onclick="reset()" class="restart">Restart</button>
     </div>
     <script>
-const input_field = document.getElementById('input');
-const resultsDiv = document.getElementById('results');
-const optionsDiv = document.getElementById('options');
-
-//Funkcija za skitje in odkritje rezultatov.
-const observer = new MutationObserver(() => {
-    if (!resultsDiv.classList.contains('hide')) {
-        optionsDiv.classList.add('hide');
-    } else {
-        optionsDiv.classList.remove('hide');
-    }
-});
-
-//Funckija ko se stran przge da naloada na stran.
-window.onload = function () {
-    fetch(`/programming_lesson/C++`)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('container-words').innerText = data.trim(); //Vstavimo vsebino lessona v container-words.
-            input_field.value = "";
-            document.getElementById("word").innerHTML = "";
-            if (typeof i_am_desperate_for_this_to_work === 'function') {
-                i_am_desperate_for_this_to_work();
+      //Isto kt v gamemodeu.html
+        const input_field = document.getElementById('input');
+        const resultsDiv = document.getElementById('results');
+        const optionsDiv = document.getElementById('options');
+        const observer = new MutationObserver(() => {
+            if (!resultsDiv.classList.contains('hide')) {
+                optionsDiv.classList.add('hide');
+            } else {
+                optionsDiv.classList.remove('hide');
             }
-            input_field.focus();
-        })
-};
-
-// Za klik na gumb
-function loadProgrammingLesson(language) {
-    const encodedLanguage = encodeURIComponent(language);
-    fetch(`/programming_lesson/${encodedLanguage}`)
-        .then(response => {
-            if (!response.ok) throw new Error('Network error');
-            return response.text(); // Pretvori vsebino v string.
-        })
-        .then(data => {
-            document.getElementById('container-words').innerText = data.trim(); // Prejeto besedilo vstavi v container-words
-            i_am_desperate_for_this_to_work();
-            input_field.focus();
-        })
-        .catch(error => {
-            console.error('Error loading lesson:', error);
         });
-}
 
-// Funkcije ki spremeni active button in naloži stirng v inputbar.
-function selectLanguage(button) {
-    document.querySelectorAll('button[name="lang_buttons"]').forEach(btn => {
-        btn.classList.remove('activeButton');
-    });
-    button.classList.add('activeButton');
-    const language = button.textContent;
-    loadProgrammingLesson(language);
-}
+        window.onload = function () {
+            fetch(`/programming_lesson/C++`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('container-words').innerText = data.trim();
+                    input_field.value = "";
+                    document.getElementById("word").innerHTML = "";
+                    if (typeof i_am_desperate_for_this_to_work === 'function') {
+                        i_am_desperate_for_this_to_work();
+                    }
+                    input_field.focus();
+                })
+        };
 
-// Funkcije ki gleda kdj je button kliklnje.
-document.querySelectorAll('button[name="lang_buttons"]').forEach(button => {
-    button.addEventListener('click', function () {
-        selectLanguage(this);
-    });
-});
+        function loadProgrammingLesson(language) {
+            const encodedLanguage = encodeURIComponent(language);
+            fetch(`/programming_lesson/${encodedLanguage}`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network error');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('container-words').innerText = data.trim();
+                    i_am_desperate_for_this_to_work();
+                    input_field.focus();
+                })
+                .catch(error => {
+                    console.error('Error loading lesson:', error);
+                });
+        }
+
+        function selectLanguage(button) {
+            document.querySelectorAll('button[name="lang_buttons"]').forEach(btn => {
+                btn.classList.remove('activeButton');
+            });
+            button.classList.add('activeButton');
+            const language = button.textContent;
+            loadProgrammingLesson(language);
+        }
+        document.querySelectorAll('button[name="lang_buttons"]').forEach(button => {
+            button.addEventListener('click', function () {
+                selectLanguage(this);
+            });
+        });
     </script>
     <script src="../static/js/typing_logic.js"></script>
     <script src="../static/js/typing_animation.js"></script>

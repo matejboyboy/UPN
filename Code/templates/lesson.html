@@ -6,43 +6,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/css/style.css">
   <title>Lesson {{ lesson_number }}</title>
-  <style>
+<style>
+    :root {
+      --form-bg: #2a2a2e;
+      --text-secondary: #a1a1aa;
+      --hover-effect: #3a3a3c;
+      --text-primary: #ffffff;
+      --accent: #5b5bff;
+      --highlight: #ffd740;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: var(--dark-bg);
-      font-family: 'Roboto', sans-serif;
-      color: var(--text-primary);
+      justify-content: flex-start;
+      background: #16161a;
+      font-family: 'Courier New', monospace;
+      color: #e0e0e0;
+    }
+
+    #main-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 60px);
+      overflow-y: auto;
+      padding: 2rem 1rem;
+    }
+
+    #word span {
+      position: relative;
+    }
+
+    .hide {
+      display: none !important;
     }
 
     #main {
       position: relative;
-      width: 90%;
-      max-width: 700px;
-      padding: 2.5rem;
-      background: var(--form-bg);
-      border-radius: 12px;
-      margin: 2rem 0;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin: 5% !important;
     }
 
-    #main:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    #word-container {
+      height: 5.6em;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border-radius: 6px;
+      box-shadow: none;
     }
 
     #word {
-      font-size: 2.2rem;
-      line-height: 1.5;
-      color: var(--text-secondary);
-      white-space: pre-wrap;
-      word-break: break-word;
-      user-select: none;
-      font-family: 'Courier New', monospace;
+      white-space: normal;
+      line-height: 1.5em;
+      word-wrap: break-word;
+      color: #ffffff !important;
     }
 
     .green_letter {
@@ -53,52 +78,39 @@
       color: #ff5c57;
     }
 
-    .inputField {
+    .missed_space {
+      background-color: #ff5c57;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    #word span.cursor::before {
+      content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      padding: 2.5rem;
-      box-sizing: border-box;
-      font-size: 2.2rem;
-      line-height: 1.5;
-      font-family: 'Courier New', monospace;
-      border: none;
-      background: transparent;
-      color: transparent;
-      caret-color: transparent;
-      outline: none;
-      white-space: pre-wrap;
-      word-break: break-word;
-      resize: none;
-      z-index: 1;
-      opacity: 0;
+      width: 2px;
+      background-color: rgb(103, 103, 255);
+      height: 1em;
+      top: 0.2em;
+      left: -2px;
+      animation-name: blink;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-timing-function: steps(1, end);
     }
 
-    .inputField:focus {
+    #CapsLockWarning {
+      margin-bottom: 1rem;
+      background-color: var(--accent);
       color: white;
-    }
-
-    #text {
-      display: none;
-    }
-
-    #timer,
-    #timer2,
-    #start,
-    #end {
-      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      font-weight: bold;
       text-align: center;
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-    }
-
-    .end {
-      color: #a9ff68;
-      font-size: 1.8rem;
-      text-align: center;
-      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     #nav-buttons {
@@ -124,44 +136,12 @@
       transform: translateY(-2px);
       box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
     }
-
-    #wpm,
-    #accuracy_stats {
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--text-primary);
-    }
-
-    #dark-main-nav {
-      width: 100vw;
-      left: 0;
-    }
-    .hide{
-      display: none !important;
-    }
-    span.cursor {
-      position: relative;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    .cursor::before {
-      content: "";
-      position: absolute;
-      width: 2px;
-      background-color: rgb(103, 103, 255);
-      height: 1em;
-      top: 0.2em;
-      left: -2px;
-      animation-name: blink;
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
-      animation-timing-function: steps(1, end);
-    }
-    .missed_space {
-      background-color: #ff5c57;
+    header {
+            width: 100%;
+            margin: 0;
+        }
+    #input {
+      background: transparent;
     }
   </style>
 </head>
@@ -169,51 +149,85 @@
 <body class="lesson">
   <header>
     <nav id="dark-main-nav" class="dark-glass">
-      <div class="dark-nav-container">
-        <a href="/" id="dark-nav-brand">
-          <span class="dark-logo-primary">Type</span>
-          <span class="dark-logo-secondary">Master</span>
-        </a>
-        <div id="dark-nav-links" class="dark-nav-links">
-          <a href="/words" class="dark-nav-link">Words</a>
-          <a href="/leaderboard" class="dark-nav-link">Leaderboard</a>
-          {% if 'username' in session %}
-          <a href="/profile" class="dark-nav-link">Profile</a>
-          {% else %}
-          <a href="/login" class="dark-nav-link">Login</a>
-          {% endif %}
-        </div>
-      </div>
-    </nav>
+  <div class="dark-nav-container">
+    <a href="/" id="dark-nav-brand">
+      <span class="dark-logo-primary">Type</span>
+      <span class="dark-logo-secondary">Master</span>
+    </a>
+    <div id="dark-nav-links" class="dark-nav-links">
+      <a href="/words" class="dark-nav-link">Words</a>
+      {% if request.path == '/words' or request.path == '/gamemode' %}
+      <a href="/gamemode" class="dark-nav-link">Gamemode</a>
+      {% endif %}
+      <a href="/leaderboard" class="dark-nav-link">Leaderboard</a>
+      {% if 'username' in session %}
+      <a href="/profile" class="dark-nav-link">Profile</a>
+      {% else %}
+      <a href="/login" class="dark-nav-link">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
   </header>
 
   <div id="text">{{ text_content }}</div>
-  <div id="start"></div>
-
-  <div id="nav-buttons">
-    {% if lesson_number > 1 %}
-    <a href="{{ url_for('display_lesson', lesson_number=lesson_number - 1) }}" class="button-small">Previous Lesson</a>
-    {% endif %}
-    {% if lesson_number < 106 %} <a href="{{ url_for('display_lesson', lesson_number=lesson_number + 1) }}" class="button-small hide" id="next_lesson">Next Lesson</a>
+  <div id="main-content">
+    <div id="container-words" class="hide"></div>
+    <div id="start"></div>
+    <div id="nav-buttons">
+      {% if lesson_number > 1 %}
+      <a href="{{ url_for('display_lesson', lesson_number=lesson_number - 1) }}" class="button-small">Previous Lesson</a>
       {% endif %}
+    {% if lesson_number < 106 %}
+      <a href="{{ url_for('display_lesson', lesson_number=lesson_number + 1) }}" class="button-small" id="next_lesson">Next Lesson</a>
+        {% endif %}
+    </div>
+    <div id="CapsLockWarning" class="hide"></div>
+
+    <div id="main">
+      <span id="countdown_timer" class="hide"></span>
+      <div id="word-container">
+        <div id="word"></div>
+      </div>
+      <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
+    </div>
+
+    <div id="results" class="hide">
+      <div id="wpm" class="hide">
+        <span id="result_text_wpm" class="text"></span>
+        <span id="result_numbers_wpm" class="numbers"></span>
+      </div>
+      <div id="accuracy_stats" class="hide">
+        <span id="result_text_accuracy" class="text"></span>
+        <span id="result_numbers_accuracy" class="numbers"></span>
+      </div>
+      <div id="timer2" class="hide">
+        <span id="result_text_time" class="text"></span>
+        <span id="result_numbers_time" class="numbers"></span>
+      </div>
+    </div>
+    <div id="timer"></div>
+    <div id="end" class="hide"></div>
+    <button id="reset" onclick="reset()" class="restart">Restart</button>
   </div>
-  <div id="CapsLockWarning" class=""></div>
 
-  <div id="main">
-    <div id="word"></div>
-    <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-      autofocus>
-  </div>
-
-  <div id="wpm"></div>
-  <div id="accuracy_stats"></div>
-  <div id="timer2"></div>
-  <div id="end"></div>
-
+  <script src="../static/js/typing_animation.js"></script>
   <script src="../static/js/typing_logic.js"></script>
   <script src="../static/js/lessons.js"></script>
   <script>
     const lessonNumber = "{{ lesson_number }}";
+    let input_field = document.getElementById('input');
+
+    window.onload = function () {
+      window.usingCountdown = false;
+      const lessonText = document.getElementById('text').innerText.trim();
+      document.getElementById('container-words').innerText = lessonText;
+      if (typeof i_am_desperate_for_this_to_work === 'function') {
+        i_am_desperate_for_this_to_work();
+      }
+      input_field.focus();
+    };
+
     function onLessonComplete() {
       fetch(`/complete_lesson/${lessonNumber}`, { // Ustvari rout ki določi kateri lesson je bil končan.
         method: 'POST',
