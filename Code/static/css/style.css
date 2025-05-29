@@ -339,14 +339,6 @@ section {
     text-decoration: none;
     font-weight: 600;
     border-radius: 6px;
-    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-}
-
-.button-small:hover {
-    background: var(--accent-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
 }
 
 .button {
@@ -360,14 +352,6 @@ section {
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-}
-
-.button:hover {
-    background: var(--accent-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
 }
 
 button {
@@ -379,15 +363,7 @@ button {
     border-radius: 4px;
     background: var(--accent);
     color: #fff;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-}
-
-button:hover {
-    background: var(--accent-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+    cursor: pointer;/
 }
 
 #login-form input:focus,
@@ -466,7 +442,6 @@ button:hover {
     width: 80%;
     max-width: 1200px;
     padding: 2rem;
-    background: #16161a;
     border-radius: 8px;
     margin: auto;
 }
@@ -474,7 +449,7 @@ button:hover {
 .lesson #word {
     font-size: 2rem;
     line-height: 1.4;
-    color: #e0e0e0;
+    color: #000000;
     background: transparent;
     white-space: pre-wrap;
     word-break: break-word;
@@ -897,13 +872,11 @@ button:hover {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .light .light-button:hover {
     background: var(--accent-dark);
     transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
 
 .light button {
@@ -917,13 +890,10 @@ button:hover {
     color: #fff;
     cursor: pointer;
     transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .light button:hover {
     background: var(--accent-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
 
 .light #light-login-form input:focus,
@@ -1016,7 +986,6 @@ button:hover {
     background: var(--light-form-bg);
     border-radius: 8px;
     margin-bottom: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .light.lesson #light-word {
@@ -1265,3 +1234,103 @@ button:hover {
     font-size: 1.5em;
 }
 
+#dark-main-nav.dark-glass {
+  background: var(--dark-nav-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.dark-nav-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
+
+#dark-nav-brand {
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.dark-logo-primary {
+  color: var(--accent);
+}
+
+.dark-logo-secondary {
+  color: var(--text-primary);
+}
+
+.dark-nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.dark-nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.dark-nav-link:hover {
+  background: var(--hover-effect);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.lesson .dark-glass {
+  padding: 0 !important;
+  position: fixed !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 60px !important;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-top: 60px;
+  min-height: 100vh;
+}
+.dark #dark-main-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    z-index: 1000;
+}
+
+.dark .dark-glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: var(--dark-nav-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
