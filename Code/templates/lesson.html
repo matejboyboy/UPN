@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/css/style.css">
   <title>Lesson {{ lesson_number }}</title>
-<style>
+  <style>
     :root {
       --form-bg: #2a2a2e;
       --text-secondary: #a1a1aa;
@@ -83,8 +83,15 @@
     }
 
     @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
     }
 
     #word span.cursor::before {
@@ -136,12 +143,21 @@
       transform: translateY(-2px);
       box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
     }
+
     header {
-            width: 100%;
-            margin: 0;
-        }
+      width: 100%;
+      margin: 0;
+    }
+
     #input {
       background: transparent;
+    }
+
+    #end {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin: 1rem 0;
     }
   </style>
 </head>
@@ -149,102 +165,85 @@
 <body class="lesson">
   <header>
     <nav id="dark-main-nav" class="dark-glass">
-  <div class="dark-nav-container">
-    <a href="/" id="dark-nav-brand">
-      <span class="dark-logo-primary">Type</span>
-      <span class="dark-logo-secondary">Master</span>
-    </a>
-    <div id="dark-nav-links" class="dark-nav-links">
-      <a href="/words" class="dark-nav-link">Words</a>
-      {% if request.path == '/words' or request.path == '/gamemode' %}
-      <a href="/gamemode" class="dark-nav-link">Gamemode</a>
-      {% endif %}
-      <a href="/leaderboard" class="dark-nav-link">Leaderboard</a>
-      {% if 'username' in session %}
-      <a href="/profile" class="dark-nav-link">Profile</a>
-      {% else %}
-      <a href="/login" class="dark-nav-link">Login</a>
-      {% endif %}
-    </div>
-  </div>
-</nav>
+      <div class="dark-nav-container">
+        <a href="/" id="dark-nav-brand">
+          <span class="dark-logo-primary">Type</span>
+          <span class="dark-logo-secondary">Master</span>
+        </a>
+        <div id="dark-nav-links" class="dark-nav-links">
+          <a href="/words" class="dark-nav-link">Words</a>
+          {% if request.path == '/words' or request.path == '/gamemode' %}
+          <a href="/gamemode" class="dark-nav-link">Gamemode</a>
+          {% endif %}
+          <a href="/leaderboard" class="dark-nav-link">Leaderboard</a>
+          {% if 'username' in session %}
+          <a href="/profile" class="dark-nav-link">Profile</a>
+          {% else %}
+          <a href="/login" class="dark-nav-link">Login</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
   </header>
 
-  <div id="text">{{ text_content }}</div>
+
+
   <div id="main-content">
-    <div id="container-words" class="hide"></div>
-    <div id="start"></div>
-    <div id="nav-buttons">
-      {% if lesson_number > 1 %}
-      <a href="{{ url_for('display_lesson', lesson_number=lesson_number - 1) }}" class="button-small">Previous Lesson</a>
-      {% endif %}
-    {% if lesson_number < 106 %}
-      <a href="{{ url_for('display_lesson', lesson_number=lesson_number + 1) }}" class="button-small" id="next_lesson">Next Lesson</a>
+    <div id="typing-interface">
+      <div id="container-words" class="hide"></div>
+      <div id="start"></div>
+      <div id="text">{{ text_content }}</div>
+      <div id="nav-buttons">
+        {% if lesson_number > 1 %}
+        <a href="{{ url_for('display_lesson', lesson_number=lesson_number - 1) }}" class="button-small">Previous
+          Lesson</a>
         {% endif %}
+        {% if lesson_number < 106 %} <a href="{{ url_for('display_lesson', lesson_number=lesson_number + 1) }}"
+          class="button-small" id="next_lesson">Next Lesson</a>
+          {% endif %}
+      </div>
+      <div id="end" class="hide"></div>
+      <div id="CapsLockWarning" class="hide"></div>
+      <div id="main">
+        <span id="countdown_timer" class="hide"></span>
+        <div id="word-container">
+          <div id="word"></div>
+        </div>
+        <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off"
+          spellcheck="false" autofocus>
+      </div>
+      <button id="reset" onclick="reset()" class="restart">Retake Lesson</button>
+      <div id="results" class="hide">
+        <div id="wpm" class="hide">
+          <span id="result_text_wpm" class="text"></span>
+          <span id="result_numbers_wpm" class="numbers"></span>
+        </div>
+        <div id="accuracy_stats" class="hide">
+          <span id="result_text_accuracy" class="text"></span>
+          <span id="result_numbers_accuracy" class="numbers"></span>
+        </div>
+        <div id="timer2" class="hide">
+          <span id="result_text_time" class="text"></span>
+          <span id="result_numbers_time" class="numbers"></span>
+        </div>
+      </div>
+      <div id="timer"></div>
     </div>
-    <div id="CapsLockWarning" class="hide"></div>
-
-    <div id="main">
-      <span id="countdown_timer" class="hide"></span>
-      <div id="word-container">
-        <div id="word"></div>
-      </div>
-      <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
-    </div>
-
-    <div id="results" class="hide">
-      <div id="wpm" class="hide">
-        <span id="result_text_wpm" class="text"></span>
-        <span id="result_numbers_wpm" class="numbers"></span>
-      </div>
-      <div id="accuracy_stats" class="hide">
-        <span id="result_text_accuracy" class="text"></span>
-        <span id="result_numbers_accuracy" class="numbers"></span>
-      </div>
-      <div id="timer2" class="hide">
-        <span id="result_text_time" class="text"></span>
-        <span id="result_numbers_time" class="numbers"></span>
-      </div>
-    </div>
-    <div id="timer"></div>
-    <div id="end" class="hide"></div>
-    <button id="reset" onclick="reset()" class="restart">Restart</button>
   </div>
 
-  <script src="../static/js/typing_animation.js"></script>
-  <script src="../static/js/typing_logic.js"></script>
+
+  <!-- Removed typing_logic.js as it contains incorrect code and is not needed -->
   <script src="../static/js/lessons.js"></script>
   <script>
-    const lessonNumber = "{{ lesson_number }}";
     let input_field = document.getElementById('input');
 
     window.onload = function () {
       window.usingCountdown = false;
       const lessonText = document.getElementById('text').innerText.trim();
       document.getElementById('container-words').innerText = lessonText;
-      if (typeof i_am_desperate_for_this_to_work === 'function') {
-        i_am_desperate_for_this_to_work();
-      }
       input_field.focus();
     };
-
-    function onLessonComplete() {
-      fetch(`/complete_lesson/${lessonNumber}`, { // Ustvari rout ki določi kateri lesson je bil končan.
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            console.log('Lesson completed');
-          } else {
-            console.error('Error completing lesson');
-          }
-        })
-        .catch(error => console.error('Error:', error));
-    }
+    // Removed redundant onLessonComplete function since it's already in lessons.js
   </script>
 </body>
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -149,8 +150,15 @@
     }
 
     @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
     }
 
     #word span.cursor::before {
@@ -202,7 +210,8 @@
       margin-left: 0.5rem;
     }
 
-    #timer, #end {
+    #timer,
+    #end {
       margin-top: 1.5rem;
       text-align: center;
       color: var(--text-secondary);
@@ -242,7 +251,7 @@
       border: none;
       background: transparent;
       color: transparent;
-      caret-color: rgb(255, 255, 255);
+      caret-color: transparent;
       outline: none;
       white-space: pre-wrap;
       word-break: break-word;
@@ -262,8 +271,14 @@
       padding: 0;
       margin: 0;
     }
+
+    #input::selection {
+      color: transparent;
+      background: transparent;
+    }
   </style>
 </head>
+
 <body class="light lesson">
   <header>
     <nav id="light-main-nav" class="light-glass">
@@ -310,7 +325,7 @@
       </span>
     </div>
     <div id="CapsLockWarning" class="hide"></div>
-    
+
     <div id="main">
       <span id="countdown_timer" class="hide"></span>
       <div id="word-container">
@@ -476,7 +491,7 @@
     }
 
     fontButtons.forEach(button => {
-      button.addEventListener('click', function() {
+      button.addEventListener('click', function () {
         fontButtons.forEach(btn => btn.classList.remove('activeButton'));
         this.classList.add('activeButton');
         const font = this.getAttribute('data-font');
@@ -485,7 +500,9 @@
       });
     });
   </script>
+  </script>
   <script src="../static/js/typing_logic.js"></script>
   <script src="../static/js/typing_animation.js"></script>
 </body>
+
 </html>

@@ -58,6 +58,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background-color: #ffffff;
         }
+
         #word-container {
             height: 5.6em;
             overflow-y: hidden;
@@ -94,8 +95,15 @@
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
 
         #word span.cursor::before {
@@ -162,7 +170,7 @@
             border: none;
             background: transparent;
             color: transparent;
-            caret-color: rgb(255, 255, 255);
+            caret-color: transparent;
             outline: none;
             white-space: pre-wrap;
             word-break: break-word;
@@ -175,12 +183,15 @@
             text-align: center;
         }
 
-        #wpm, #accuracy_stats, #timer2 {
+        #wpm,
+        #accuracy_stats,
+        #timer2 {
             font-size: 1.2rem;
             color: var(--light-text-primary);
         }
 
-        #timer, #end {
+        #timer,
+        #end {
             margin-top: 1.5rem;
             text-align: center;
             color: var(--light-text-secondary);
@@ -218,6 +229,11 @@
             padding: 0;
             margin: 0;
         }
+
+        #input::selection {
+            color: transparent;
+            background: transparent;
+        }
     </style>
 </head>
 
@@ -251,10 +267,9 @@
             <a href="{{ url_for('display_lightlesson', lesson_number=lesson_number - 1) }}"
                 class="light-button-small">Previous Lesson</a>
             {% endif %}
-            {% if lesson_number < 106 %}
-            <a href="{{ url_for('display_lightlesson', lesson_number=lesson_number + 1) }}"
+            {% if lesson_number < 106 %} <a href="{{ url_for('display_lightlesson', lesson_number=lesson_number + 1) }}"
                 class="light-button-small">Next Lesson</a>
-            {% endif %}
+                {% endif %}
         </div>
         <div id="CapsLockWarning" class="hide"></div>
 
@@ -281,10 +296,9 @@
         </div>
         <div id="timer"></div>
         <div id="end" class="hide"></div>
-        <button id="reset" onclick="reset()" class="restart">Restart</button>
+        <button id="reset" onclick="reset()" class="restart">Retake Lesson</button>
     </div>
 
-    <script src="../static/js/typing_animation.js"></script>
     <script src="../static/js/typing_logic.js"></script>
     <script src="../static/js/lessons.js"></script>
     <script>
