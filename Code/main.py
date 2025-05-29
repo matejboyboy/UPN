@@ -27,13 +27,13 @@ ALLOWED_PROFILE_PICTURES = [
     '/static/Slike/BEAR.png'
 ]
 
-# PROGRAMMING_LESSONS = {
-#     'C++': {'base': 107, 'count': 5},
-#     'CSS': {'base': 112, 'count': 5},
-#     'HTML': {'base': 117, 'count': 5},
-#     'JavaScript': {'base': 122, 'count': 5},
-#     'Python': {'base': 127, 'count': 5}
-# }
+PROGRAMMING_LESSONS = {
+    'C++': {'base': 107, 'count': 5},
+    'CSS': {'base': 112, 'count': 5},
+    'HTML': {'base': 117, 'count': 5},
+    'JavaScript': {'base': 122, 'count': 5},
+    'Python': {'base': 127, 'count': 5}
+}
 
 @app.route("/")
 def home():
@@ -68,6 +68,10 @@ def light():
 def words():
     return render_template('words.html')
 
+@app.route("/lightwords", methods=['GET', 'POST'])
+def lightwords():
+    return render_template('lightwords.html')
+
 @app.route('/lesson/<int:lesson_number>') # Rout ustvarimo z spremenljivko lesson_number.
 def display_lesson(lesson_number):
     file_name = str(lesson_number).zfill(3) + '.txt' # Ustvarimo ime datoteke, Zfill nardi da mome stevilo imet tri mesta.
@@ -95,26 +99,34 @@ def display_lightlesson(lesson_number):
         pass
     return render_template('lightlesson.html', text_content=lesson_content, lesson_number=lesson_number)
 
-# @app.route('/programming_lesson/<language>')
-# def programming_lesson(language):
-#     lesson_num = random.randint(1, 5)
-#     base = PROGRAMMING_LESSONS[language]['base']
-#     file_num = base + (lesson_num - 1)
-#     file_name = f"{file_num:03d}{language}.txt"
-#     file_path = os.path.join(os.path.dirname(__file__), 'Lessons', file_name)
-#     try:
-#         with open(file_path, 'r', encoding='utf-8') as file:
-#             lesson_content = file.read()
-#     except FileNotFoundError:
-#         lesson_content = f"Napaka: Datoteka {file_name} ni najdena v mapi Lessons"
-#     return lesson_content
-# @app.route('/gamemode')
-# def gamemode():
-#     return render_template('gamemode.html')
+# Isto kt v lessonih sam da rount creata s pomocjo dictonarya zgorij.
+@app.route('/programming_lesson/<language>')
+def programming_lesson(language):
+    lesson_num = random.randint(1, 5)
+    base = PROGRAMMING_LESSONS[language]['base']
+    file_num = base + (lesson_num - 1)
+    file_name = f"{file_num:03d}{language}.txt"
+    file_path = os.path.join(os.path.dirname(__file__), 'Gamemode_txt', file_name)
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            lesson_content = file.read().replace('\t', '    ')
+    except FileNotFoundError:
+        lesson_content = f"Napaka: Datoteka {file_name} ni najdena v mapi Gamemode_txt"
+    return lesson_content
 
-# @app.route("/gamemode", methods=['GET', 'POST'])
-# def gamemode():
-#     return render_template('gamemode.html')
+@app.route("/gamemode", methods=['GET', 'POST'])
+def gamemode():
+    if request.method == 'POST':
+        pass
+    else:
+        return render_template('gamemode.html')
+
+@app.route("/gamemodelight", methods=['GET', 'POST'])
+def gamemodelight():
+    if request.method == 'POST':
+        pass
+    else:
+        return render_template('gamemodelight.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -450,7 +462,7 @@ def leaderboard():
     # Ponovimo za time kategorijo.
     elif category.startswith('time'):
         try:
-            time_seconds = int(category[4:]) # Pretvori čas v celo int.
+            time_seconds = int(category[4:])  * 1000 # Pretvori čas v celo int.
         except ValueError:
             return "Neveljavna kategorija", 400
         cur.execute("""
@@ -493,7 +505,7 @@ def leaderboardLight():
         header = f"Najboljši WPM za {word_count} besed"
     elif category.startswith('time'):
         try:
-            time_seconds = int(category[4:])
+            time_seconds = int(category[4:]) * 1000  # Convert seconds to milliseconds
         except ValueError:
             return "Neveljavna kategorija", 400
         cur.execute("""
@@ -502,7 +514,7 @@ def leaderboardLight():
             ORDER BY best_wpm DESC
         """, (time_seconds,))
         leaders = cur.fetchall()
-        header = f"Najboljši WPM v {time_seconds} sekundah"
+        header = f"Najboljši WPM v {time_seconds // 1000} sekundah"  # Display in seconds
     else:
         return "Neveljavna kategorija", 400
     cur.close()
