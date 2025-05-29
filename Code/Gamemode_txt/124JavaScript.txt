@@ -1,0 +1,8 @@
+function toggleVisibility(elementId, className = 'hidden') {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.classList.toggle(className);
+    } else {
+        console.warn(`Element with ID '${elementId}' for toggle not found.`);
+    }
+}

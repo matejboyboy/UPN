@@ -1,0 +1,10 @@
+img.responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+@media (max-width: 600px) {
+    img.responsive {
+        border-radius: 5px;
+    }
+}

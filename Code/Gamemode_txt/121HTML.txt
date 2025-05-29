@@ -1,0 +1,8 @@
+<footer>
+    <nav>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+    <p>&copy; 2025 My Website</p>
+</footer>

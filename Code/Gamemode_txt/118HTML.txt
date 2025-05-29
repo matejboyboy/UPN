@@ -1,0 +1,8 @@
+<div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 5px; width: 200px;">
+    <h4>Card Title 1</h4>
+    <p>Some short content for the first card.</p>
+</div>
+<div style="border: 1px solid #ccc; padding: 10px; width: 200px; background: #f0f0f0;">
+    <h4>Card Title 2</h4>
+    <p>Different content for the second card here.</p>
+</div>

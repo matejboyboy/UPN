@@ -1,0 +1,9 @@
+function checkTyping() {
+    const input = document.getElementById('typingInput').value;
+    const target = "Hello, World!";
+    if (input === target) {
+        alert("Correct!");
+    } else {
+        alert("Try again.");
+    }
+}

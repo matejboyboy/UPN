@@ -1,0 +1,6 @@
+function calculateRectangleArea(width, height) {
+    if (width <= 0 || height <= 0) {
+        return "Dimensions must be positive.";
+    }
+    return width * height;
+}

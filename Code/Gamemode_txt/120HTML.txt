@@ -1,0 +1,10 @@
+<article>
+    <header>
+        <h2>Article Title</h2>
+        <p>Published on <time datetime="2025-05-18">May 18, 2025</time></p>
+    </header>
+    <p>This is the main content of the article, providing information on a topic.</p>
+    <footer>
+        <p>Author: John Doe</p>
+    </footer>
+</article>

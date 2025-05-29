@@ -1,0 +1,8 @@
+function updateElementText(elementId, newText) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.textContent = newText;
+    } else {
+        console.warn(`Element with ID '${elementId}' not found.`);
+    }
+}

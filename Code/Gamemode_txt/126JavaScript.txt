@@ -1,0 +1,4 @@
+function countCharacters(inputId) {
+    const input = document.getElementById(inputId).value;
+    return input.length;
+}

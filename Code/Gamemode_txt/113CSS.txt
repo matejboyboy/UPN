@@ -1,0 +1,7 @@
+p.custom-text {
+    font-family: 'Georgia', serif;
+    font-size: 1.1em;
+    color: #4A4A4A;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}

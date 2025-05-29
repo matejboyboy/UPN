@@ -1,0 +1,8 @@
+<dl>
+    <dt>HTML</dt>
+    <dd>HyperText Markup Language - for web page structure.</dd>
+    <dt>CSS</dt>
+    <dd>Cascading Style Sheets - for web page styling.</dd>
+    <dt>JS</dt>
+    <dd>JavaScript - for web page interactivity.</dd>
+</dl>

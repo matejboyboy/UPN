@@ -1,0 +1,16 @@
+#include <iostream>
+#include <vector>
+
+int sumArray(const std::vector<int>& arr) {
+    int sum = 0;
+    for (int num : arr) {
+        sum += num;
+    }
+    return sum;
+}
+
+int main() {
+    std::vector<int> numbers = {1, 2, 3, 4, 5};
+    std::cout << "Sum of array elements: " << sumArray(numbers) << std::endl;
+    return 0;
+}

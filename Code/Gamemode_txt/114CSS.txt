@@ -1,0 +1,9 @@
+ul.styled-list li {
+    list-style-type: square;
+    margin-left: 20px;
+    padding-left: 5px;
+    color: #505050;
+}
+ul.styled-list li::marker {
+    color: #007bff;
+}
