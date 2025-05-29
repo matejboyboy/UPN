@@ -4,8 +4,7 @@
 - **Test Tipkanja**  
   ▸ Osnovni test tipkanja  
   - Podprti jeziki:  
-    • Angleščina  
-    • Slovenščina  
+    • Angleščina   
   - Tip tipkovnice: Slovenska
 
 - **Učenje Slepega Tipkanja**  
