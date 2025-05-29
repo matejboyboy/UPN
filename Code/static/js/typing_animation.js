@@ -7,8 +7,10 @@ function i_am_desperate_for_this_to_work() {
     window.options1 = document.getElementById('options1');
     window.options2 = document.getElementById('options2');
     window.options = document.getElementById('options');
-    start.innerHTML = "Start typing!";
-    start.setAttribute("class", "start");
+    if (start) {
+        start.innerHTML = "Start typing!";
+        start.setAttribute("class", "start");
+    }
     window.end = document.getElementById('end');
     window.startingMs2 = 0;
     window.showTimer2 = document.getElementById("timer2");
@@ -62,11 +64,9 @@ function i_am_desperate_for_this_to_work() {
     Spans(string);
 
     window.chars_total = string.length;
-    window.prevValue = "";
     window.typing_errors = [];
     window.errorEvents = [];
     window.letterSpans = wordElement.children;
-
 
     window.updateCursorPosition = function (currentIndex) {
         if (document.activeElement === UserInput){
@@ -87,6 +87,9 @@ function i_am_desperate_for_this_to_work() {
 
         }
     }
+    updateCursorPosition(0);
+    window.prevValue = "";
+
 
     if (string.length > 0) {
         updateCursorPosition(0);
@@ -118,7 +121,9 @@ function i_am_desperate_for_this_to_work() {
             } else {
                 interval2 = setInterval(updateTimer2, 10);
             }
-            start.remove();
+            if (start) {
+                start.remove();
+            }
         }
 
         if (UserStr.length < prevValue.length) {
@@ -201,7 +206,9 @@ function i_am_desperate_for_this_to_work() {
             result_value_accuracy.innerHTML = final_accuracy + '%';
             result_text_time.innerHTML = "Final time: ";        
             result_numbers_time.innerHTML = og_time_ms / 100 + 's';
-            CapsLock.remove();
+            if (CapsLock) {
+                CapsLock.remove();
+            }
         } else {
             chars_wrong = typing_errors.length;
             let right = chars_right();
@@ -215,8 +222,12 @@ function i_am_desperate_for_this_to_work() {
             let charactersTyped = chars_right();
             calculateWPM(charactersTyped, startingMs2 * 10, 'word');
             UserInput.readOnly = true;
-            main.classList.add("hide");
-            all_buttons.classList.add('hide');
+            if (main) {
+                main.classList.add("hide");
+            }
+            if (all_buttons) {
+                all_buttons.classList.add('hide');
+            }
 
             results.classList.remove("hide");
             showWpm.classList.add('results-row');
@@ -272,7 +283,7 @@ function calculateWPM(charactersTyped, timeMs, testType) {
                         console.error('Error saving score:', data.error);
                         alert('Failed to save score: ' + data.error);
                     } else if (data.updated) {
-                        end.innerHTML += '<div class="new-pb">🎉 New personal best!</div>';
+                        end.innerHTML += '<div class="new-pb">New personal best!</div>';
                     }
                 })
                 .catch(err => console.error('Error saving WPM:', err));
@@ -293,6 +304,7 @@ function calculateWPM(charactersTyped, timeMs, testType) {
     function updateTimer2() {
         startingMs2++;
     }
+    
 }
 
 function reset() {
