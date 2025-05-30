@@ -185,12 +185,8 @@
       </div>
     </nav>
   </header>
-
-
-
   <div id="main-content">
-    <div id="typing-interface">
-      <div id="container-words" class="hide"></div>
+
       <div id="start"></div>
       <div id="text">{{ text_content }}</div>
       <div id="nav-buttons">
@@ -212,27 +208,12 @@
         <input id="input" class="inputField" autocomplete="off" autocorrect="off" autocapitalize="off"
           spellcheck="false" autofocus>
       </div>
-      <button id="reset" onclick="reset()" class="restart">Retake Lesson</button>
-      <div id="results" class="hide">
-        <div id="wpm" class="hide">
-          <span id="result_text_wpm" class="text"></span>
-          <span id="result_numbers_wpm" class="numbers"></span>
-        </div>
-        <div id="accuracy_stats" class="hide">
-          <span id="result_text_accuracy" class="text"></span>
-          <span id="result_numbers_accuracy" class="numbers"></span>
-        </div>
-        <div id="timer2" class="hide">
-          <span id="result_text_time" class="text"></span>
-          <span id="result_numbers_time" class="numbers"></span>
-        </div>
-      </div>
-      <div id="timer"></div>
+      <button id="reset" onclick="reset()" class="restart button-small">Retake Lesson</button>
     </div>
   </div>
 
 
-  <!-- Removed typing_logic.js as it contains incorrect code and is not needed -->
+  <script src="../static/js/typing_logic.js"></script>
   <script src="../static/js/lessons.js"></script>
   <script>
     let input_field = document.getElementById('input');
@@ -243,7 +224,6 @@
       document.getElementById('container-words').innerText = lessonText;
       input_field.focus();
     };
-    // Removed redundant onLessonComplete function since it's already in lessons.js
   </script>
 </body>
 
